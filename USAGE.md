@@ -89,3 +89,44 @@ cfs validate .
 ```
 
 `cfs validate` adds the static layer: required sections per artifact kind, ID grammar (`cpt-{system}-{claim|cert|run|thm|pm|lem}-{slug}`), and the reference chain (every CLAIM must be referenced by a CERTIFICATE, every CERTIFICATE by a CHECK-RUN). *Note: installation against a live Studio instance is not yet exercised — file an issue if the manifest schema drifts.*
+
+## 6. The full Constructor Fabric flow (validated end-to-end 2026-08-11)
+
+Scenario: you know only a paper (arXiv:2510.15143) and its repo (github.com/vgitton/fast-inflation), and want a gated verification project.
+
+```bash
+# 1. Studio + project
+pipx install git+https://github.com/constructorfabric/studio.git
+mkdir verify-ejm-gitton && cd verify-ejm-gitton && git init
+cfs init --yes                                 # installs SDLC kit by default
+
+# 2. This kit (local path or GitHub)
+cfs kit install --path /path/to/studio-kit-qi --install-mode copy
+cfs validate-kits --kit studio-kit-qi          # expect: all passed
+
+# 3. Fetch the object of study
+git clone https://github.com/vgitton/fast-inflation external/fast-inflation
+shasum -a 256 external/fast-inflation/data/*certificate*   # record hashes
+
+# 4. Author artifacts from kit templates (.cf-studio/config/kits/studio-kit-qi/artifacts/*/template.md)
+#    docs/qi/CLAIM/... CERTIFICATE/... — follow workflows/verify-certificate.md
+#    Conventions cfs validate enforces: ID line right under H1; a Table of Contents
+#    section (generate with `cfs toc docs/qi/**/*.md`); ID system prefix must match
+#    a registered system.
+
+# 5. Run checks -> CHECK-RUN artifacts
+python3 .cf-studio/config/kits/studio-kit-qi/scripts/check_certificate.py \
+    external/fast-inflation/data/srb_222_certificate.txt \
+    --repo external/fast-inflation --target srb --check-run docs/qi/CHECK-RUN/RUN-srb.md
+
+# 6. Register artifacts: add a [[systems]] block (kit = "studio-kit-qi") to
+#    .cf-studio/config/artifacts.toml listing each file with its kind.
+
+# 7. Gates
+cfs validate                                              # static: structure, IDs, chain
+python3 .cf-studio/config/kits/studio-kit-qi/scripts/graph_gate.py docs/qi   # semantic
+```
+
+Result in the validated run: two certified claims (EJM 2×2×4 via the ported original checker — environment diversity; SRB 2×2×2 via the kit's independent checker — implementation diversity), both gates green.
+
+Known rough edges (fixes tracked): checker needs `--system`/`--cert-id` flags so generated CHECK-RUNs drop in without edits; `graph_gate.py` expects kind-named subdirectories; migrate manifest to `.cf-studio-kit.toml`.
