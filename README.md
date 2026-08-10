@@ -50,7 +50,7 @@ See [USAGE.md](USAGE.md) — standalone quickstart (no Studio needed): tour the 
 ## Install
 
 ```bash
-cfs kit install <owner>/studio-kit-qi
+cfs kit install omniscale-ai/studio-kit-qi
 ```
 
 ## License

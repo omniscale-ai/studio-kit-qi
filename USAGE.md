@@ -5,7 +5,7 @@ No Constructor Studio installation is required for the standalone workflow — j
 ## 0. Get the kit
 
 ```bash
-git clone <this-repo> studio-kit-qi && cd studio-kit-qi
+git clone git@github.com:omniscale-ai/studio-kit-qi.git && cd studio-kit-qi
 ```
 
 ## 1. Tour the artifact chain (5 minutes, read-only)
@@ -84,7 +84,7 @@ What the checker does is specified in `scripts/CERTIFICATE-SEMANTICS.md` — pre
 The kit follows the SDLC-kit layout (`manifest.toml` schema v1.0, `constraints.toml` for `cfs validate`):
 
 ```bash
-cfs kit install <owner>/studio-kit-qi
+cfs kit install omniscale-ai/studio-kit-qi
 cfs validate .
 ```
 
