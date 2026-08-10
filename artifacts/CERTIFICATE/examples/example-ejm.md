@@ -5,8 +5,19 @@ date: 2026-08-10
 
 # Farkas certificate: EJM incompatible with the 2×2×4 inflation LP
 
-**ID**: `cpt-qi-cert-ejm-224-farkas`
 
+<!-- toc -->
+
+- [Certified Claim](#certified-claim)
+- [Certificate File](#certificate-file)
+- [Semantics](#semantics)
+- [Auxiliary Inputs](#auxiliary-inputs)
+- [Provenance](#provenance)
+- [Check Runs](#check-runs)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-cert-ejm-224-farkas`
 ## Certified Claim
 
 `cpt-qi-claim-ejm-triangle-nonlocal` — non-3-locality of the EJM distribution (via inflation soundness: LP infeasibility at any inflation level implies non-membership in the 3-local set).

@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # BSC strong data-processing inequality
 
-**ID**: `cpt-qi-lem-pgr-bsc-sdpi`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-bsc-sdpi`
 ## Statement
 
-`cpt-qi-lem-pgr-bsc-sdpi`: For L ∈ {0,1}, J = L ⊕ N with N ~ Bern(δ) independent of (U,L), 0 ≤ δ ≤ 1/2: I(U;J) ≤ (1−2δ)²·I(U;L). PGR use δ = 1/5: I(U;J) ≤ (9/25)·I(U;L).
+For L ∈ {0,1}, J = L ⊕ N with N ~ Bern(δ) independent of (U,L), 0 ≤ δ ≤ 1/2: I(U;J) ≤ (1−2δ)²·I(U;L). PGR use δ = 1/5: I(U;J) ≤ (9/25)·I(U;L).
 
 ## Role in Proof
 

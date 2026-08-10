@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # Determinant identity: det(aA + bB) = ab/36 (rank-one rigidity core)
 
-**ID**: `cpt-qi-lem-pgr-det-identity`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-det-identity`
 ## Statement
 
-`cpt-qi-lem-pgr-det-identity`: For all real a, b: det(aA + bB) = ab/36, where A, B are the J-slices of `cpt-qi-lem-pgr-slices-product`. Consequently any nonzero, entrywise-nonnegative, rank-one combination aA + bB is a positive multiple of A or of B — the only two nonnegative rank-one rays in the span.
+For all real a, b: det(aA + bB) = ab/36, where A, B are the J-slices of `cpt-qi-lem-pgr-slices-product`. Consequently any nonzero, entrywise-nonnegative, rank-one combination aA + bB is a positive multiple of A or of B — the only two nonnegative rank-one rays in the span.
 
 ## Role in Proof
 

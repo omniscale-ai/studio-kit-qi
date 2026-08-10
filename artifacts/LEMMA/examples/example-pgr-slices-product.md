@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # J-slices are rank-one: J decouples X from Y (PGR, part 1)
 
-**ID**: `cpt-qi-lem-pgr-slices-product`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-slices-product`
 ## Statement
 
-`cpt-qi-lem-pgr-slices-product`: The slices of the PGR source conditioned on J, A = (1/18)[[4,2],[2,1]] and B = (1/18)[[1,2],[2,4]], are rank-one matrices; hence, conditioned on either value of J, the pair (X,Y) is a product distribution: X ⊥ Y | J. Moreover A + B = P_XY.
+The slices of the PGR source conditioned on J, A = (1/18)[[4,2],[2,1]] and B = (1/18)[[1,2],[2,4]], are rank-one matrices; hence, conditioned on either value of J, the pair (X,Y) is a product distribution: X ⊥ Y | J. Moreover A + B = P_XY.
 
 ## Role in Proof
 

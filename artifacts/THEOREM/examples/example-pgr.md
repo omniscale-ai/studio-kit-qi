@@ -5,11 +5,20 @@ date: 2026-08-10
 
 # Bipartite bound information exists (Pauwels–Gisin–Renner, Theorem 1)
 
-**ID**: `cpt-qi-thm-pgr-bound-info`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Source](#source)
+- [Proof Map](#proof-map)
+- [Trust Summary](#trust-summary)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-thm-pgr-bound-info`
 ## Statement
 
-`cpt-qi-thm-pgr-bound-info`: The source of PGR Table I — the distribution over (X,Y,Z) ∈ {0,1}²×{0,1,⊥} with slices M₀ = (1/36)[[5,2],[2,0]], M₁ = (1/36)[[0,2],[2,5]], M⊥ = (1/36)[[5,4],[4,5]] — has bipartite bound information:
+The source of PGR Table I — the distribution over (X,Y,Z) ∈ {0,1}²×{0,1,⊥} with slices M₀ = (1/36)[[5,2],[2,0]], M₁ = (1/36)[[0,2],[2,5]], M⊥ = (1/36)[[5,4],[4,5]] — has bipartite bound information:
 
 S(X;Y‖Z) = 0 < I(X;Y↓Z) ≤ I_form(X;Y|Z),
 

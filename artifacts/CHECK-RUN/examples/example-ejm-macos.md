@@ -6,8 +6,19 @@ generated-by: manual-bootstrap (kit Step 1; script generation arrives with scrip
 
 # EJM 2×2×4 certificate check — macOS/arm64, Mosek-free build
 
-**ID**: `cpt-qi-run-ejm-224-macos-arm64-20260810`
 
+<!-- toc -->
+
+- [Certificate](#certificate)
+- [Checker](#checker)
+- [Environment](#environment)
+- [Command](#command)
+- [Result](#result)
+- [Attestation](#attestation)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-run-ejm-224-macos-arm64-20260810`
 ## Certificate
 
 `cpt-qi-cert-ejm-224-farkas`

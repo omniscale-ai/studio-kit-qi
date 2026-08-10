@@ -190,7 +190,7 @@ required = true
 priority = false
 to_code = false
 template = "cpt-{system}-claim-{slug}"
-headings = ["claim-statement"]
+headings = ["claim-h1-title"]
 
 [artifacts.CLAIM.identifiers.claim.references.CERTIFICATE]
 headings = ["cert-certified-claim"]
@@ -204,7 +204,7 @@ required = true
 priority = false
 to_code = false
 template = "cpt-{system}-cert-{slug}"
-headings = ["cert-file"]
+headings = ["cert-h1-title"]
 
 [artifacts.CERTIFICATE.identifiers.cert.references.CHECK-RUN]
 headings = ["run-certificate"]
@@ -218,7 +218,7 @@ required = true
 priority = false
 to_code = false
 template = "cpt-{system}-run-{slug}"
-headings = ["run-result"]
+headings = ["run-h1-title"]
 
 # ── THEOREM heading outline ───────────────────────────────────────────
 
@@ -349,7 +349,7 @@ required = true
 priority = false
 to_code = false
 template = "cpt-{system}-thm-{slug}"
-headings = ["thm-statement"]
+headings = ["thm-h1-title"]
 
 [artifacts.THEOREM.identifiers.thm.references.PROOF-MAP]
 headings = ["pm-theorem"]
@@ -363,7 +363,7 @@ required = true
 priority = false
 to_code = false
 template = "cpt-{system}-lem-{slug}"
-headings = ["lem-statement"]
+headings = ["lem-h1-title"]
 
 [artifacts.LEMMA.identifiers.lem.references.PROOF-MAP]
 headings = ["pm-dag"]

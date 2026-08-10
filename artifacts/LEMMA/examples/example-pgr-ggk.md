@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # Less-noisy dominance bounds the secret-key rate (GGK)
 
-**ID**: `cpt-qi-lem-pgr-ggk`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-ggk`
 ## Statement
 
-`cpt-qi-lem-pgr-ggk`: For a fixed honest-party marginal P_XY, if Eve's channel dominates another channel in the less-noisy sense, P_Z|XY ⪰_ln P_J|XY (i.e., I(U;Z) ≥ I(U;J) for every auxiliary U and every input law), then S(X;Y‖Z) ≤ S(X;Y‖J) — against arbitrary interactive public-discussion protocols at all blocklengths.
+For a fixed honest-party marginal P_XY, if Eve's channel dominates another channel in the less-noisy sense, P_Z|XY ⪰_ln P_J|XY (i.e., I(U;Z) ≥ I(U;J) for every auxiliary U and every input law), then S(X;Y‖Z) ≤ S(X;Y‖J) — against arbitrary interactive public-discussion protocols at all blocklengths.
 
 ## Role in Proof
 

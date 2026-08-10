@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # Erasure identity: I(U;Z) = (1−ε)·I(U;L) for Z = BEC_ε(L)
 
-**ID**: `cpt-qi-lem-pgr-erasure-identity`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-erasure-identity`
 ## Statement
 
-`cpt-qi-lem-pgr-erasure-identity`: If Z is the output of a binary erasure channel with erasure probability ε applied to L, with the erasure event independent of (U, L), then I(U;Z) = (1−ε)·I(U;L). PGR use ε = 1/2: I(U;Z) = ½·I(U;L).
+If Z is the output of a binary erasure channel with erasure probability ε applied to L, with the erasure event independent of (U, L), then I(U;Z) = (1−ε)·I(U;L). PGR use ε = 1/2: I(U;Z) = ½·I(U;L).
 
 ## Role in Proof
 

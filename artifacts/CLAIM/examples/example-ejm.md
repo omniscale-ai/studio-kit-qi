@@ -5,11 +5,21 @@ date: 2026-08-10
 
 # EJM distribution is not 3-local in the triangle network
 
-**ID**: `cpt-qi-claim-ejm-triangle-nonlocal`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Model Class](#model-class)
+- [Exact Data](#exact-data)
+- [Provenance](#provenance)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-claim-ejm-triangle-nonlocal`
 ## Statement
 
-`cpt-qi-claim-ejm-triangle-nonlocal`: The distribution p_EJM over outcomes (a,b,c) ∈ {1,2,3,4}³ defined in Exact Data admits **no** 3-local triangle model: there exist no response functions p_A, p_B, p_C and no independent latent variables α, β, γ (of any cardinality) realizing the decomposition given in Model Class.
+The distribution p_EJM over outcomes (a,b,c) ∈ {1,2,3,4}³ defined in Exact Data admits **no** 3-local triangle model: there exist no response functions p_A, p_B, p_C and no independent latent variables α, β, γ (of any cardinality) realizing the decomposition given in Model Class.
 
 ## Model Class
 

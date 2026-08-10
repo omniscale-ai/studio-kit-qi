@@ -4,8 +4,16 @@ date: 2026-08-10
 
 # Proof map: PGR Theorem 1 (bipartite bound information)
 
-**ID**: `cpt-qi-pm-pgr-thm1`
 
+<!-- toc -->
+
+- [Theorem](#theorem)
+- [Dependency Graph](#dependency-graph)
+- [Load-Bearing Nodes](#load-bearing-nodes)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-pm-pgr-thm1`
 ## Theorem
 
 `cpt-qi-thm-pgr-bound-info`

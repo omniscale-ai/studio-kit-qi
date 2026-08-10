@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # No stochastic channel Z→J reproduces the J-slices (PGR, part 4 core)
 
-**ID**: `cpt-qi-lem-pgr-no-channel`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-no-channel`
 ## Statement
 
-`cpt-qi-lem-pgr-no-channel`: There is no stochastic channel Z→J (a 3×2 row-stochastic matrix, Z ∈ {0,1,⊥}, J ∈ {0,1}) such that processing the Z-output of the PGR source yields the exact joint slices A = (1/18)[[4,2],[2,1]], B = (1/18)[[1,2],[2,4]] of the J-channel. Concretely (paper Eq. 12): writing r_z = P(J=1|Z=z), the constraints force (r₀+r⊥)/2 = 1/5 and (r₁+r⊥)/2 = 4/5, hence r₁ − r₀ = 6/5 > 1 — impossible for probabilities.
+There is no stochastic channel Z→J (a 3×2 row-stochastic matrix, Z ∈ {0,1,⊥}, J ∈ {0,1}) such that processing the Z-output of the PGR source yields the exact joint slices A = (1/18)[[4,2],[2,1]], B = (1/18)[[1,2],[2,4]] of the J-channel. Concretely (paper Eq. 12): writing r_z = P(J=1|Z=z), the constraints force (r₀+r⊥)/2 = 1/5 and (r₁+r⊥)/2 = 4/5, hence r₁ − r₀ = 6/5 > 1 — impossible for probabilities.
 
 ## Role in Proof
 

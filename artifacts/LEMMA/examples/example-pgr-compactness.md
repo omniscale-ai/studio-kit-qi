@@ -5,11 +5,19 @@ date: 2026-08-10
 
 # Compactness: zero intrinsic information implies an exact decoupling channel
 
-**ID**: `cpt-qi-lem-pgr-compactness`
 
+<!-- toc -->
+
+- [Statement](#statement)
+- [Role in Proof](#role-in-proof)
+- [Verification](#verification)
+
+<!-- /toc -->
+
+**ID**: `cpt-qi-lem-pgr-compactness`
 ## Statement
 
-`cpt-qi-lem-pgr-compactness`: For finite alphabets, I(X;Y↓Z) = 0 implies the infimum in the intrinsic information is attained: there exists a channel Z→Z̃ with I(X;Y|Z̃) = 0 exactly. (Closes the loophole of a sequence of channels decoupling only in the limit.)
+For finite alphabets, I(X;Y↓Z) = 0 implies the infimum in the intrinsic information is attained: there exists a channel Z→Z̃ with I(X;Y|Z̃) = 0 exactly. (Closes the loophole of a sequence of channels decoupling only in the limit.)
 
 ## Role in Proof
 
