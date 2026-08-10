@@ -37,11 +37,11 @@ The **Elegant Joint Measurement** distribution in the triangle network (Gisin 20
 ## Status
 
 - [x] Step 1 — kit skeleton, certificate-layer artifact types, EJM canonical example
-- [ ] Step 2 — independent exact checker (`scripts/check_certificate.py`)
-- [ ] Step 3 — theorem layer (THEOREM / PROOF-MAP / LEMMA) + PGR bound-information example
-- [ ] Step 4 — workflows (verify-certificate, decompose-proof, hunt-counterexample, audit-references)
-- [ ] Step 5 — CI hook re-running computational gates
-- [ ] Step 6 — pilot integration
+- [x] Step 2 — independent exact checker (`scripts/check_certificate.py`; SRB verdict matches instrumented C++ ground truth exactly; spec in `scripts/CERTIFICATE-SEMANTICS.md`)
+- [x] Step 3 — theorem layer (THEOREM / PROOF-MAP / LEMMA) + PGR bound-information example (7-node claim graph, `graph_gate.py` PASS)
+- [x] Step 4 — workflows (verify-certificate, decompose-proof, hunt-counterexample, audit-references)
+- [x] Step 5 — CI: graph-gate + certificate re-check on every push
+- [ ] Step 6 — pilot integration; next: symtree enumerator for the EJM 2×2×4 certificate
 
 ## Usage
 
