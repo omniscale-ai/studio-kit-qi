@@ -1,4 +1,4 @@
-# Constructor Studio QI Kit
+# Constructor Studio Quantum Information Kit
 
 A [Constructor Studio](https://github.com/constructorfabric/studio) kit for **machine-checkable impossibility claims in quantum information theory**.
 
