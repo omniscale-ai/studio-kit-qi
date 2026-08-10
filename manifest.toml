@@ -187,3 +187,19 @@ source = "workflows/audit-references.md"
 default_path = "workflows/audit-references.md"
 type = "file"
 user_modifiable = true
+
+[[resources]]
+id = "check_certificate"
+description = "Independent exact-arithmetic checker for fast-inflation certificates (generates CHECK-RUN records)"
+source = "scripts/check_certificate.py"
+default_path = "scripts/check_certificate.py"
+type = "file"
+user_modifiable = false
+
+[[resources]]
+id = "certificate_semantics"
+description = "Clean-room specification of the certificate format and checking predicate"
+source = "scripts/CERTIFICATE-SEMANTICS.md"
+default_path = "scripts/CERTIFICATE-SEMANTICS.md"
+type = "file"
+user_modifiable = false
