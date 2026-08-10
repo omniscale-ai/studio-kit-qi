@@ -43,6 +43,10 @@ The **Elegant Joint Measurement** distribution in the triangle network (Gisin 20
 - [ ] Step 5 — CI hook re-running computational gates
 - [ ] Step 6 — pilot integration
 
+## Usage
+
+See [USAGE.md](USAGE.md) — standalone quickstart (no Studio needed): tour the examples, run the semantic gate, re-verify a real nonlocality certificate in 30 seconds.
+
 ## Install
 
 ```bash
