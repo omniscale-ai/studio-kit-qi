@@ -1,0 +1,26 @@
+---
+status: {formalized | machine-checked | expert-verified | cited | open}
+date: {YYYY-MM-DD}
+---
+
+# {Lemma short title}
+
+**ID**: `cpt-{system}-lem-{slug}`
+
+## Statement
+
+{The lemma statement, self-contained.}
+
+## Role in Proof
+
+{Which proof-map(s) and edges this node supports; what breaks without it.}
+
+## Verification
+
+{The verification route and its artifacts:
+- tier A (exact computation / certificate): reference CLAIM/CERTIFICATE/CHECK-RUN IDs
+- tier B (symbolic): script + output reference
+- tier C (Lean): repo + commit + theorem name + build status
+- cited: exact external statement + resolvable reference
+- expert: named reviewer + date + scope of review
+The frontmatter status must match the strongest artifact actually present here.}

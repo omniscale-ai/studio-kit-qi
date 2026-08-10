@@ -219,3 +219,151 @@ priority = false
 to_code = false
 template = "cpt-{system}-run-{slug}"
 headings = ["run-result"]
+
+# ── THEOREM heading outline ───────────────────────────────────────────
+
+[[artifacts.THEOREM.headings]]
+id = "thm-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Theorem document title (H1)."
+
+[[artifacts.THEOREM.headings]]
+id = "thm-statement"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Statement"
+description = "The theorem statement, quantifiers explicit."
+
+[[artifacts.THEOREM.headings]]
+id = "thm-source"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Source"
+description = "Paper/preprint the theorem comes from, with resolvable references."
+
+[[artifacts.THEOREM.headings]]
+id = "thm-proof-map"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Proof Map"
+description = "Reference to the PROOF-MAP artifact decomposing the proof."
+
+[[artifacts.THEOREM.headings]]
+id = "thm-trust"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Trust Summary"
+description = "Aggregated status: weakest link across load-bearing nodes."
+
+# ── PROOF-MAP heading outline ─────────────────────────────────────────
+
+[[artifacts.PROOF-MAP.headings]]
+id = "pm-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Proof map title (H1)."
+
+[[artifacts.PROOF-MAP.headings]]
+id = "pm-theorem"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Theorem"
+description = "Reference to the THEOREM this map decomposes."
+
+[[artifacts.PROOF-MAP.headings]]
+id = "pm-dag"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Dependency Graph"
+description = "The lemma DAG: nodes with IDs, statuses, and edges (which lemma feeds which)."
+
+[[artifacts.PROOF-MAP.headings]]
+id = "pm-load-bearing"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Load-Bearing Nodes"
+description = "Explicit list of nodes the theorem cannot survive without, each with current status."
+
+# ── LEMMA heading outline ─────────────────────────────────────────────
+
+[[artifacts.LEMMA.headings]]
+id = "lem-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Lemma document title (H1)."
+
+[[artifacts.LEMMA.headings]]
+id = "lem-statement"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Statement"
+description = "The lemma statement."
+
+[[artifacts.LEMMA.headings]]
+id = "lem-role"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Role in Proof"
+description = "What breaks without this lemma; which proof-map edges it supports."
+
+[[artifacts.LEMMA.headings]]
+id = "lem-verification"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Verification"
+description = "Verification route and artifacts: tier A (exact/certificate), tier B (symbolic), tier C (Lean), cited, or expert."
+
+# ── THEOREM identifiers ───────────────────────────────────────────────
+
+[artifacts.THEOREM.identifiers.thm]
+name = "Theorem"
+description = "A published theorem under claim-graph verification."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-thm-{slug}"
+headings = ["thm-statement"]
+
+[artifacts.THEOREM.identifiers.thm.references.PROOF-MAP]
+headings = ["pm-theorem"]
+
+# ── LEMMA identifiers ─────────────────────────────────────────────────
+
+[artifacts.LEMMA.identifiers.lem]
+name = "Lemma"
+description = "A node of a proof's dependency graph with its own verification route."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-lem-{slug}"
+headings = ["lem-statement"]
+
+[artifacts.LEMMA.identifiers.lem.references.PROOF-MAP]
+headings = ["pm-dag"]

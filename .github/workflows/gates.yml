@@ -1,0 +1,11 @@
+name: gates
+on: [push, pull_request]
+jobs:
+  graph-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cross-artifact semantic gate
+        run: python3 scripts/graph_gate.py artifacts
+  # certificate re-check job lands with scripts/check_certificate.py (Step 2):
+  # clone vgitton/fast-inflation (data files), verify hashes, re-run the SRB check.

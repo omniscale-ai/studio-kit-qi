@@ -117,3 +117,73 @@ source = "constraints.toml"
 default_path = "constraints.toml"
 type = "file"
 user_modifiable = true
+
+# ── THEOREM / PROOF-MAP / LEMMA artifact files (theorem layer) ───────
+
+[[resources]]
+id = "theorem_template"
+description = "THEOREM artifact template"
+source = "artifacts/THEOREM/template.md"
+default_path = "artifacts/THEOREM/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "proof_map_template"
+description = "PROOF-MAP artifact template"
+source = "artifacts/PROOF-MAP/template.md"
+default_path = "artifacts/PROOF-MAP/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "lemma_template"
+description = "LEMMA artifact template"
+source = "artifacts/LEMMA/template.md"
+default_path = "artifacts/LEMMA/template.md"
+type = "file"
+user_modifiable = true
+
+# ── Scripts (computational gates) ────────────────────────────────────
+
+[[resources]]
+id = "graph_gate"
+description = "Cross-artifact semantic gate (status consistency, load-bearing resolution)"
+source = "scripts/graph_gate.py"
+default_path = "scripts/graph_gate.py"
+type = "file"
+user_modifiable = false
+
+# ── Workflows ────────────────────────────────────────────────────────
+
+[[resources]]
+id = "wf_verify_certificate"
+description = "Workflow: run checker, record CHECK-RUN, update statuses"
+source = "workflows/verify-certificate.md"
+default_path = "workflows/verify-certificate.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "wf_decompose_proof"
+description = "Workflow: build THEOREM/PROOF-MAP/LEMMA claim graph from a paper"
+source = "workflows/decompose-proof.md"
+default_path = "workflows/decompose-proof.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "wf_hunt_counterexample"
+description = "Workflow: certificate-producing search over finite model classes"
+source = "workflows/hunt-counterexample.md"
+default_path = "workflows/hunt-counterexample.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "wf_audit_references"
+description = "Workflow: resolve and statement-check all cited nodes"
+source = "workflows/audit-references.md"
+default_path = "workflows/audit-references.md"
+type = "file"
+user_modifiable = true
