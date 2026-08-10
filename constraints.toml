@@ -367,3 +367,17 @@ headings = ["lem-statement"]
 
 [artifacts.LEMMA.identifiers.lem.references.PROOF-MAP]
 headings = ["pm-dag"]
+
+# ── PROOF-MAP identifiers ─────────────────────────────────────────────
+
+[artifacts.PROOF-MAP.identifiers.pm]
+name = "Proof Map"
+description = "The dependency DAG decomposing one theorem's proof into lemma nodes."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-pm-{slug}"
+headings = ["pm-h1-title"]
+
+[artifacts.PROOF-MAP.identifiers.pm.references.THEOREM]
+headings = ["thm-proof-map"]
