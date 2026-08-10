@@ -1,0 +1,221 @@
+# ── CLAIM heading outline ─────────────────────────────────────────────
+
+[[artifacts.CLAIM.headings]]
+id = "claim-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Claim document title (H1)."
+
+[[artifacts.CLAIM.headings]]
+id = "claim-statement"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Statement"
+description = "The precise impossibility statement, quantifiers explicit."
+
+[[artifacts.CLAIM.headings]]
+id = "claim-model"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Model Class"
+description = "The class of models the claim excludes (e.g., 3-local triangle models)."
+
+[[artifacts.CLAIM.headings]]
+id = "claim-data"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Exact Data"
+description = "The mathematical object, in exact rational form. No floating point."
+
+[[artifacts.CLAIM.headings]]
+id = "claim-provenance"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Provenance"
+description = "Where the claim comes from: paper, conjecture history, authorship."
+
+[[artifacts.CLAIM.headings]]
+id = "claim-verification"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Verification"
+description = "Links to certificates that witness this claim."
+
+# ── CERTIFICATE heading outline ───────────────────────────────────────
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Certificate document title (H1)."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-certified-claim"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Certified Claim"
+description = "Reference to the CLAIM this certificate witnesses."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-file"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Certificate File"
+description = "External file reference: path/URL, byte size, SHA-256. Never inlined."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-semantics"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Semantics"
+description = "What the certificate is mathematically and what checking it establishes."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-auxiliary"
+level = 2
+required = false
+multiple = false
+numbered = false
+pattern = "Auxiliary Inputs"
+description = "Additional inputs the check depends on (e.g., symmetrized event tree), each with hash and trust note."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-provenance"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Provenance"
+description = "How the certificate was found: tool, algorithm, cost. Informational — trust does not depend on it."
+
+[[artifacts.CERTIFICATE.headings]]
+id = "cert-runs"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Check Runs"
+description = "Links to CHECK-RUN records for this certificate."
+
+# ── CHECK-RUN heading outline ─────────────────────────────────────────
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Check-run record title (H1)."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-certificate"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Certificate"
+description = "Reference to the CERTIFICATE checked, including the SHA-256 actually observed."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-checker"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Checker"
+description = "The checking program: name, version/commit, independence relation to the certificate producer."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-environment"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Environment"
+description = "OS, architecture, compiler/runtime, arithmetic library."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-command"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Command"
+description = "Exact reproducible invocation."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-result"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Result"
+description = "Verdict, wall time, peak memory. The verdict vocabulary is fixed by rules.md."
+
+[[artifacts.CHECK-RUN.headings]]
+id = "run-attestation"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Attestation"
+description = "Who/what produced this record. CHECK-RUN records are script-generated."
+
+# ── CLAIM identifiers ─────────────────────────────────────────────────
+
+[artifacts.CLAIM.identifiers.claim]
+name = "Impossibility Claim"
+description = "A precise machine-checkable impossibility statement about a finite probabilistic model."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-claim-{slug}"
+headings = ["claim-statement"]
+
+[artifacts.CLAIM.identifiers.claim.references.CERTIFICATE]
+headings = ["cert-certified-claim"]
+
+# ── CERTIFICATE identifiers ───────────────────────────────────────────
+
+[artifacts.CERTIFICATE.identifiers.cert]
+name = "Certificate"
+description = "An exact rational witness for a claim, stored as an external hashed file."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-cert-{slug}"
+headings = ["cert-file"]
+
+[artifacts.CERTIFICATE.identifiers.cert.references.CHECK-RUN]
+headings = ["run-certificate"]
+
+# ── CHECK-RUN identifiers ─────────────────────────────────────────────
+
+[artifacts.CHECK-RUN.identifiers.run]
+name = "Check Run"
+description = "One verification of one certificate in one environment."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-run-{slug}"
+headings = ["run-result"]

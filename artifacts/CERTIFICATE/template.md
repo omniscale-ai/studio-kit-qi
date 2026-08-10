@@ -1,0 +1,43 @@
+---
+status: {unverified | checked}
+date: {YYYY-MM-DD}
+---
+
+# {Short certificate title}
+
+**ID**: `cpt-{system}-cert-{slug}`
+
+## Certified Claim
+
+{Reference the CLAIM this certificate witnesses: `cpt-{system}-claim-{slug}`.
+One certificate certifies exactly one claim.}
+
+## Certificate File
+
+{External file reference — the certificate is NEVER inlined into this artifact:
+- **Path/URL**: {where the file lives, with a stable reference}
+- **Size**: {bytes}
+- **SHA-256**: `{hash}`
+- **Format**: {one paragraph: encoding, sections, coefficient representation}}
+
+## Semantics
+
+{What the certificate IS mathematically (e.g., a Farkas separating hyperplane for LP infeasibility;
+an SOS decomposition) and the exact statement that a passing check establishes:
+"⟨certificate, v⟩ > 0 for every vertex v of polytope P, and P ⊇ all model-class images, hence the claim."
+Spell out the checking predicate precisely enough that an independent implementation needs no other source.}
+
+## Auxiliary Inputs
+
+{Any additional inputs the check consumes (e.g., a symmetrized event enumeration), each with
+path, SHA-256, and an explicit trust note: is this input verified, re-derivable, or trusted?}
+
+## Provenance
+
+{How the certificate was found: tool + version/commit, algorithm, compute cost.
+Informational only — the trust chain does not depend on this section.}
+
+## Check Runs
+
+{Links to CHECK-RUN records: `cpt-{system}-run-{slug}`, most recent first.
+Frontmatter status: checked requires at least one passing run.}

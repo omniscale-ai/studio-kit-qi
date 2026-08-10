@@ -1,0 +1,119 @@
+# Constructor Studio QI Kit — Declarative Installation Manifest
+# Schema: kit-manifest.schema.json v1.0
+
+[manifest]
+version = "1.0"
+root = "{cf-studio-path}/config/kits/{slug}"
+user_modifiable = true
+
+# ── CLAIM artifact files ─────────────────────────────────────────────
+
+[[resources]]
+id = "claim_template"
+description = "CLAIM artifact template"
+source = "artifacts/CLAIM/template.md"
+default_path = "artifacts/CLAIM/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "claim_rules"
+description = "CLAIM validation rules"
+source = "artifacts/CLAIM/rules.md"
+default_path = "artifacts/CLAIM/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "claim_checklist"
+description = "CLAIM review checklist"
+source = "artifacts/CLAIM/checklist.md"
+default_path = "artifacts/CLAIM/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "claim_example"
+description = "CLAIM example artifact (EJM triangle nonlocality)"
+source = "artifacts/CLAIM/examples/example-ejm.md"
+default_path = "artifacts/CLAIM/examples/example-ejm.md"
+type = "file"
+user_modifiable = true
+
+# ── CERTIFICATE artifact files ───────────────────────────────────────
+
+[[resources]]
+id = "certificate_template"
+description = "CERTIFICATE artifact template"
+source = "artifacts/CERTIFICATE/template.md"
+default_path = "artifacts/CERTIFICATE/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "certificate_rules"
+description = "CERTIFICATE validation rules"
+source = "artifacts/CERTIFICATE/rules.md"
+default_path = "artifacts/CERTIFICATE/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "certificate_checklist"
+description = "CERTIFICATE review checklist"
+source = "artifacts/CERTIFICATE/checklist.md"
+default_path = "artifacts/CERTIFICATE/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "certificate_example"
+description = "CERTIFICATE example artifact (EJM 2x2x4 Farkas certificate)"
+source = "artifacts/CERTIFICATE/examples/example-ejm.md"
+default_path = "artifacts/CERTIFICATE/examples/example-ejm.md"
+type = "file"
+user_modifiable = true
+
+# ── CHECK-RUN artifact files ─────────────────────────────────────────
+
+[[resources]]
+id = "check_run_template"
+description = "CHECK-RUN artifact template"
+source = "artifacts/CHECK-RUN/template.md"
+default_path = "artifacts/CHECK-RUN/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "check_run_rules"
+description = "CHECK-RUN validation rules"
+source = "artifacts/CHECK-RUN/rules.md"
+default_path = "artifacts/CHECK-RUN/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "check_run_checklist"
+description = "CHECK-RUN review checklist"
+source = "artifacts/CHECK-RUN/checklist.md"
+default_path = "artifacts/CHECK-RUN/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "check_run_example"
+description = "CHECK-RUN example artifact (EJM certificate reproduction, macOS/arm64)"
+source = "artifacts/CHECK-RUN/examples/example-ejm-macos.md"
+default_path = "artifacts/CHECK-RUN/examples/example-ejm-macos.md"
+type = "file"
+user_modifiable = true
+
+# ── Validation constraints ───────────────────────────────────────────
+
+[[resources]]
+id = "constraints"
+description = "Deterministic validation constraints for QI kit artifact kinds"
+source = "constraints.toml"
+default_path = "constraints.toml"
+type = "file"
+user_modifiable = true

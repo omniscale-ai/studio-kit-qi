@@ -1,0 +1,35 @@
+---
+status: {open | certified}
+date: {YYYY-MM-DD}
+---
+
+# {Short claim title}
+
+**ID**: `cpt-{system}-claim-{slug}`
+
+## Statement
+
+{One precise impossibility statement with all quantifiers explicit, e.g.:
+"The distribution p defined in Exact Data admits no model of the class defined in Model Class."
+State exactly what is quantified over (all response functions, all latent distributions, all blocklengths, ...).}
+
+## Model Class
+
+{Define the excluded model class mathematically. Give the decomposition form explicitly,
+e.g. p(a,b,c) = Σ P(α)P(β)P(γ) P(a|β,γ) P(b|γ,α) P(c|α,β), and any cardinality reductions
+(Carathéodory bounds) that make the problem finite-dimensional.}
+
+## Exact Data
+
+{The mathematical object in exact rational form. Tables of probabilities as fractions.
+No floating point anywhere in this section. If the object is parameterized (e.g., visibility),
+state the exact parameter value the claim is about.}
+
+## Provenance
+
+{Origin of the claim: paper(s) with arXiv IDs/DOIs, conjecture history, who proved it and how.}
+
+## Verification
+
+{Links to CERTIFICATE artifacts witnessing this claim: `cpt-{system}-cert-{slug}`.
+While no certificate exists, state "none yet" and keep frontmatter status: open.}

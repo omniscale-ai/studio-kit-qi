@@ -1,0 +1,43 @@
+---
+status: {pass | fail | error}
+date: {YYYY-MM-DD}
+generated-by: {script name + version — CHECK-RUN records are script-generated, never hand-written}
+---
+
+# {Short run title: certificate + environment}
+
+**ID**: `cpt-{system}-run-{slug}`
+
+## Certificate
+
+{Reference: `cpt-{system}-cert-{slug}`.
+- **File checked**: {path}
+- **SHA-256 observed**: `{hash computed at run time — must equal the CERTIFICATE's declared hash}`
+- **Auxiliary inputs observed**: {path: hash, ...}}
+
+## Checker
+
+{Name, version/commit of the checking program, and its **independence relation** to the certificate
+producer: same codebase / independent implementation / formally verified checker.}
+
+## Environment
+
+{OS + version, architecture, compiler/runtime + version, exact-arithmetic library + version.
+Enough to reproduce and to count toward environment diversity.}
+
+## Command
+
+```
+{exact invocation, copy-pasteable}
+```
+
+## Result
+
+- **Verdict**: {pass | fail | error} — {one line: what the verdict means for the claim}
+- **Wall time**: {…}
+- **Peak memory**: {…}
+- {checker-specific outputs: minimum inner product value, number of vertices enumerated, …}
+
+## Attestation
+
+{What produced this record (script + invocation), where the raw log lives, log hash.}
