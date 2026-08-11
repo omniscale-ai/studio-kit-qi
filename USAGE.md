@@ -131,3 +131,19 @@ python3 .cf-studio/config/kits/studio-kit-qi/scripts/graph_gate.py docs/qi   # s
 Result in the validated run: two certified claims (EJM 2×2×4 via the ported original checker — environment diversity; SRB 2×2×2 via the kit's independent checker — implementation diversity), both gates green.
 
 Known rough edges (fixes tracked): checker needs `--system`/`--cert-id` flags so generated CHECK-RUNs drop in without edits; `graph_gate.py` expects kind-named subdirectories; migrate manifest to `.cf-studio-kit.toml`.
+
+## 7. Updating the kit in your project
+
+The kit's source of record is **github.com/omniscale-ai/studio-kit-qi**. If you installed from GitHub (`cfs kit install omniscale-ai/studio-kit-qi`), updating is one command from your project root:
+
+```bash
+cfs kit update studio-kit-qi -y
+cfs validate-kits --kit studio-kit-qi     # expect: all passed
+cfs validate                              # new constraints may tighten rules for existing artifacts
+```
+
+Notes:
+
+- Resources marked `user_modifiable` (constraints, workflows, templates) are **overwrite-protected**: if your installed copy differs from what the previous version shipped, the update declines those files and prints the exact `--approve-overwrite <resource-id>` flags to accept them. Run interactively (drop `-y`) to approve file-by-file, or pass the printed flags. This is deliberate — your local customizations are never silently clobbered.
+- If you originally installed from a local checkout, either keep updating with `--path /path/to/studio-kit-qi`, or switch the source once by reinstalling from GitHub.
+- With no releases tagged yet, updates track the default branch (`authority: github_default_branch`). Once versions are tagged, `cfs kit update` follows releases and `--version` pins one.
