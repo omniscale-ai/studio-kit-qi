@@ -145,5 +145,10 @@ cfs validate                              # new constraints may tighten rules fo
 Notes:
 
 - Resources marked `user_modifiable` (constraints, workflows, templates) are **overwrite-protected**: if your installed copy differs from what the previous version shipped, the update declines those files and prints the exact `--approve-overwrite <resource-id>` flags to accept them. Run interactively (drop `-y`) to approve file-by-file, or pass the printed flags. This is deliberate — your local customizations are never silently clobbered.
-- If you originally installed from a local checkout, either keep updating with `--path /path/to/studio-kit-qi`, or switch the source once by reinstalling from GitHub.
+- If you originally installed from a local checkout (`cfs kit install --path …`), the update command will say **"Kit 'studio-kit-qi' has no registered source — skipping"** — local copy-mode installs register no update source. Either keep updating with an explicit path (`cfs kit update studio-kit-qi --path /path/to/studio-kit-qi -y`), or switch the source once:
+
+  ```bash
+  cfs kit install omniscale-ai/studio-kit-qi --force   # re-registers GitHub as the source
+  cfs kit update studio-kit-qi -y                      # works from now on
+  ```
 - With no releases tagged yet, updates track the default branch (`authority: github_default_branch`). Once versions are tagged, `cfs kit update` follows releases and `--version` pins one.
