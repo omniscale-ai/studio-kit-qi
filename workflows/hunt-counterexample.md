@@ -8,6 +8,10 @@ description: Invoke when the user asks to search for counterexamples or witnesse
 
 - A target property (what a hit looks like), the search space (alphabet sizes, parameterization), and per-candidate checkable conditions.
 
+## Step 0 — Plan gate
+
+Locate an `approved` VERIFICATION-PLAN covering this work. **If none exists, run `workflows/plan-verification.md` FIRST** — brainstorm scope, depth, allowed interventions, budget with the user before any heavy action. NEVER patch third-party code, stub dependencies, choose verification depth, or contact authors unless the plan authorizes it; an unlisted intervention sends you back to plan-verification for an amendment.
+
 ## Steps
 
 1. **Specify the search as data.** Write the search spec: candidate space, per-candidate predicate (each condition with its verification tier — e.g., rank-one separation: exact arithmetic; less-noisy dominance: numeric screening + exact certification; simulation infeasibility: LP + Farkas certificate), and scoring for ranking hits.

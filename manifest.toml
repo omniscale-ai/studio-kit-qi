@@ -203,3 +203,45 @@ source = "scripts/CERTIFICATE-SEMANTICS.md"
 default_path = "scripts/CERTIFICATE-SEMANTICS.md"
 type = "file"
 user_modifiable = false
+
+# ── VERIFICATION-PLAN artifact files (intake brainstorm) ─────────────
+
+[[resources]]
+id = "vplan_template"
+description = "VERIFICATION-PLAN artifact template"
+source = "artifacts/VERIFICATION-PLAN/template.md"
+default_path = "artifacts/VERIFICATION-PLAN/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_rules"
+description = "VERIFICATION-PLAN validation rules"
+source = "artifacts/VERIFICATION-PLAN/rules.md"
+default_path = "artifacts/VERIFICATION-PLAN/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_checklist"
+description = "VERIFICATION-PLAN review checklist"
+source = "artifacts/VERIFICATION-PLAN/checklist.md"
+default_path = "artifacts/VERIFICATION-PLAN/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_example"
+description = "VERIFICATION-PLAN example (EJM/Gitton verification intake)"
+source = "artifacts/VERIFICATION-PLAN/examples/example-ejm-plan.md"
+default_path = "artifacts/VERIFICATION-PLAN/examples/example-ejm-plan.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "wf_plan_verification"
+description = "Workflow: interactive intake brainstorm producing a VERIFICATION-PLAN (gates all other workflows)"
+source = "workflows/plan-verification.md"
+default_path = "workflows/plan-verification.md"
+type = "file"
+user_modifiable = true

@@ -72,6 +72,7 @@ What the checker does is specified in `scripts/CERTIFICATE-SEMANTICS.md` — pre
 ## 4. Author your own claim graph
 
 1. Copy templates from `artifacts/*/template.md`; follow the matching `workflows/*.md` (they are agent-facing but human-readable):
+   - **start here** → `workflows/plan-verification.md`: interactive brainstorm (scope, depth menu with costs, allowed interventions, budget) producing a VERIFICATION-PLAN — all other workflows gate on an approved plan
    - new impossibility result → `workflows/decompose-proof.md` (THEOREM → PROOF-MAP → LEMMAs, statuses start `open`/`cited`)
    - got a certificate → `workflows/verify-certificate.md` (hash first, check, script-generated CHECK-RUN, then statuses)
    - searching for examples → `workflows/hunt-counterexample.md` (floats screen, only exact arithmetic asserts)

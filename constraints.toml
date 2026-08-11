@@ -381,3 +381,87 @@ headings = ["pm-h1-title"]
 
 [artifacts.PROOF-MAP.identifiers.pm.references.THEOREM]
 headings = ["thm-proof-map"]
+
+# ── VERIFICATION-PLAN heading outline ─────────────────────────────────
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Plan title (H1)."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-scope"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Scope"
+description = "Claims in scope (ranked) and explicit out-of-scope items."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-depth"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Depth Targets"
+description = "Per-claim verification depth with accepted effort estimates."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-interventions"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Allowed Interventions"
+description = "User-authorized interventions; everything else defaults to ask-first."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-budget"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Budget"
+description = "Time box, machines, licenses."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-deliverables"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Deliverables"
+description = "What the work must produce."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-decisions"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Decisions Log"
+description = "Brainstorm record: question, options with trade-offs, choice."
+
+[[artifacts.VERIFICATION-PLAN.headings]]
+id = "vplan-approval"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Approval"
+description = "Who approved, when. Required for status: approved."
+
+# ── VERIFICATION-PLAN identifiers ─────────────────────────────────────
+
+[artifacts.VERIFICATION-PLAN.identifiers.vplan]
+name = "Verification Plan"
+description = "The approved intake decisions (scope, depth, interventions, budget) gating verification work."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-vplan-{slug}"
+headings = ["vplan-h1-title"]

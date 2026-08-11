@@ -8,6 +8,10 @@ description: Invoke when the user asks to build a claim graph for a theorem/pape
 
 - A paper (PDF/arXiv ID) and the target theorem within it.
 
+## Step 0 — Plan gate
+
+Locate an `approved` VERIFICATION-PLAN covering this work. **If none exists, run `workflows/plan-verification.md` FIRST** — brainstorm scope, depth, allowed interventions, budget with the user before any heavy action. NEVER patch third-party code, stub dependencies, choose verification depth, or contact authors unless the plan authorizes it; an unlisted intervention sends you back to plan-verification for an amendment.
+
 ## Steps
 
 1. **Create the THEOREM artifact** from `artifacts/THEOREM/template.md`. Statement must match the source exactly; run reference-audit on the Source section.

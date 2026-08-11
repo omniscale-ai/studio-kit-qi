@@ -8,6 +8,10 @@ description: Invoke when the user asks to verify/check a nonlocality or impossib
 
 - A CERTIFICATE artifact (or a path to a certificate file plus enough context to draft one).
 
+## Step 0 — Plan gate
+
+Locate an `approved` VERIFICATION-PLAN covering this work. **If none exists, run `workflows/plan-verification.md` FIRST** — brainstorm scope, depth, allowed interventions, budget with the user before any heavy action. NEVER patch third-party code, stub dependencies, choose verification depth, or contact authors unless the plan authorizes it; an unlisted intervention sends you back to plan-verification for an amendment.
+
 ## Steps
 
 1. **Resolve the CERTIFICATE artifact.** If only a raw file is given, first create the CERTIFICATE artifact from `artifacts/CERTIFICATE/template.md` — the Semantics section must be complete before any run (rules.md rule 2).

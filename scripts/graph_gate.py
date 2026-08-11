@@ -11,6 +11,7 @@ Deterministic checks that exceed what `cfs validate` (static structure) can expr
          keyword in the Verification section; see STRONG_EVIDENCE).
   G3  Every load-bearing node ID in a PROOF-MAP resolves to a LEMMA/CLAIM artifact.
   G4  CLAIM status `certified` requires a CERTIFICATE referencing it with a passing CHECK-RUN.
+  G5  VERIFICATION-PLAN status `approved` requires a filled Approval section.
 
 Usage:  python3 graph_gate.py <artifacts-root> [--json]
 Exit:   0 all gates pass, 1 violations found, 2 usage/parse error.
@@ -49,13 +50,14 @@ def ids_in(text: str, kind: str) -> list:
 
 def collect(root: Path) -> dict:
     docs = {}
-    for kind in ["CLAIM", "CERTIFICATE", "CHECK-RUN", "THEOREM", "PROOF-MAP", "LEMMA"]:
+    for kind in ["CLAIM", "CERTIFICATE", "CHECK-RUN", "THEOREM", "PROOF-MAP", "LEMMA", "VERIFICATION-PLAN"]:
         for p in sorted((root / kind).rglob("*.md")):
             if p.name in ("template.md", "rules.md", "checklist.md"):
                 continue
             text = p.read_text(encoding="utf-8")
             own_kind = {"CLAIM": "claim", "CERTIFICATE": "cert", "CHECK-RUN": "run",
-                        "THEOREM": "thm", "PROOF-MAP": "pm", "LEMMA": "lem"}[kind]
+                        "THEOREM": "thm", "PROOF-MAP": "pm", "LEMMA": "lem",
+                        "VERIFICATION-PLAN": "vplan"}[kind]
             own_ids = ids_in(text, own_kind)
             docs[p] = {"kind": kind, "text": text, "fm": frontmatter(text),
                        "id": own_ids[0] if own_ids else None}
@@ -122,6 +124,12 @@ def run_gates(root: Path):
                 violations.append(
                     f"G2 {p.name}: status {status} but Verification section shows no "
                     f"check-run/build artifact")
+
+        if d["kind"] == "VERIFICATION-PLAN":                          # G5
+            if d["fm"].get("status") == "approved":
+                appr = section(d["text"], "Approval").strip()
+                if not appr or appr.startswith("{"):
+                    violations.append(f"G5 {p.name}: status approved but Approval section empty/placeholder")
 
         if d["kind"] == "CLAIM":                                      # G4
             if d["fm"].get("status") == "certified":
