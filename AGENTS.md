@@ -33,6 +33,8 @@ ALWAYS run `cfs validate` and `python3 {graph_gate} <artifacts-root>` on the wri
 
 ALWAYS generate a PROOF-ATTEMPT with `python3 {attest_lean} …` and a CHECK-RUN with the kit checker; fill only the sections the script leaves to the agent
 
+ALWAYS invoke the `lean-proof` skill (and `mathlib-build` for Mathlib projects) from the leanprover/skills plugin, if it is installed, WHEN writing the Lean development of a PROOF-ATTEMPT; a skill shapes how a proof is found and is named in `--route-note`, never the verdict, which only `{attest_lean}` writes (P11)
+
 NEVER write `pass`, `proved`, `refuted`, `certified`, `machine-checked` or `formalized` on your own authority: a PROOF-ATTEMPT or CHECK-RUN status is written by its script, and a CONJECTURE, CLAIM, LEMMA or THEOREM status is set only together with the artifact that establishes it, which `graph_gate` verifies
 
 NEVER edit the script-owned sections of a PROOF-ATTEMPT or any section of a CHECK-RUN; re-run the script instead

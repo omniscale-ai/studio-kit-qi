@@ -18,7 +18,7 @@ Discovery work has order-of-magnitude cost differences (exact enumeration of a f
    - **Budget.** Attempts per conjecture per route, total attempts, time box, exploration compute, conjectures open at once.
    - **Success criteria.** The six rows `attest_lean.py` measures (builds, sorry-free, axioms-standard, statement-matches, dependencies-pinned, statement-confirmed), the allowed axiom set (default `propext`, `Classical.choice`, `Quot.sound`), and any route-specific row. Each with a justification; confirmed by name and date; frozen before the first attempt.
    - **Cross-check roles (P13).** Who performs the independent reading of every formal statement — a named human, or a second agent instance started fresh and shown only the Lean block, its definitions and the concordance — and who confirms faithfulness. The author of a Lean block never reads it alone.
-   - **Deliverables.** Artifacts only / report / Lean repository / Mathlib PR / preprint.
+   - **Deliverables.** Artifacts only / report / Lean repository / Mathlib PR / preprint. For a Mathlib PR the `mathlib-pr` and `mathlib-review` skills from leanprover/skills carry the upstream conventions (PR title format, labels, style); note in the plan that they apply.
 3. **Write the RESEARCH-PLAN** from `artifacts/RESEARCH-PLAN/template.md`, including the Decisions Log (question → options offered → user's choice) and an empty Conjecture Register.
 4. **Get explicit approval** — the user confirms the plan, the cost table and the criteria table; record the date in the Approval section. Only then dispatch to `propose-conjecture`, `attempt-proof` or `hunt-counterexample`.
 

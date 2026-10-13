@@ -119,6 +119,18 @@ STATUS           : PASS — every criterion row passes; the declaration proves t
 
 Six rows, each measured, none weighted: `lake build` exit; `sorryAx` absent from `#print axioms` (the build exit code does *not* detect `sorry`); axioms within the allowed set; the declaration's `#check` type equal to the CONJECTURE's compiled Formal Statement; toolchain and packages pinned; and the one judged row — the CONJECTURE's Faithfulness Cross-Check: an independent reader (here a second agent instance shown only the Lean code and the concordance) back-translated the block into prose and it was compared with the informal statement element by element, the Lean definitions were evaluated on the same instances as the exploration record (`Instances.lean`), and a named person confirmed — copied, never filled by the attempt. Add `--refutes` and point at `Chsh.not_bell_pm_one_in_pm_two` with the refuted conjecture to see the other path. The script never writes `proved`: it writes `pass`, `refuted`, `incomplete` or `error`, and `graph_gate` derives the conjecture's status from that.
 
+### Companion skills (optional)
+
+The kit depends on no agent skill. When an agent writes the Lean development of a PROOF-ATTEMPT, though, the official [leanprover/skills](https://github.com/leanprover/skills) plugin (Lean FRO, Apache-2.0) is the recommended proof methodology, and the workflows name it where it applies: `lean-proof` (one tactic at a time, error priority, hardest goal first, dependent-type rewriting) in `attempt-proof` step 3, `mathlib-build` (olean cache, quiet builds) in step 2, and `mathlib-pr` / `mathlib-review` when a RESEARCH-PLAN's deliverable is a Mathlib PR. The other skills there (`lean-setup`, `lean-bisect`, `nightly-testing`, `lean-pr`) serve contributors to the Lean compiler itself; `lean-setup` in particular builds lean4 from source, which no kit workflow needs.
+
+```bash
+claude plugin marketplace add https://github.com/leanprover/skills.git   # Claude Code
+claude plugin install lean@leanprover
+# Codex CLI, inside a session:  $skill-installer install https://github.com/leanprover/skills/tree/main/skills/*
+```
+
+Under P11 a skill is provenance, not evidence: name it in `--route-note` and it lands in the attempt's Route section, while the verdict still comes from `attest_lean.py` alone. Reviewed against plugin version 0.1.0 (commit `7d3da02`); the plugin's own test harness is designed to retire skills as models improve, which is why the kit references rather than vendors them.
+
 ## 4. Author your own claim graph
 
 1. Copy templates from `artifacts/*/template.md`; follow the matching `workflows/*.md` (they are agent-facing but human-readable):
