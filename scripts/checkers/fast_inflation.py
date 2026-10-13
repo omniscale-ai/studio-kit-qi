@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-check_certificate.py — independent (clean-room) checker for nonlocality
+fast_inflation.py — independent (clean-room) checker for nonlocality
 certificates produced by the fast-inflation codebase (Gitton & Renner,
 arXiv:2510.15143).
 
 This is a from-scratch re-implementation of the *mathematical checking
 predicate* only. No code is shared with fast-inflation; the conventions it
-relies on are documented in CERTIFICATE-SEMANTICS.md (same directory) and
+relies on are documented in FAST-INFLATION-SEMANTICS.md (same directory) and
 were reverse-engineered from the C++ sources and validated against
 instrumented reference runs.
 
@@ -27,8 +27,15 @@ What it does
 
 Usage
 -----
-    python3 check_certificate.py <certificate-file> [--repo <fast-inflation-root>]
-                                 [--target srb] [--check-run <output.md>]
+    python3 fast_inflation.py <certificate-file> [--repo <fast-inflation-root>]
+                              [--target srb] [--check-run <output.md>]
+                              [--system <id-system>] [--cert-id <CERTIFICATE id>]
+                              [--run-slug <slug>]
+
+--check-run writes a CHECK-RUN artifact under the kit's checker contract
+(scripts/checkers/README.md): ID `cpt-<system>-run-<slug>` (default system
+`fastinflation`, default slug `<target>-<inflation size>-py`), the CERTIFICATE
+ID it checks when --cert-id is given, hashes observed, verdict pass/fail.
 
 The --repo argument is only used to resolve a relative certificate path
 against the repository's data/ directory.
@@ -669,7 +676,7 @@ def sha256_file(path):
     return h.hexdigest()
 
 
-def write_check_run(res, out_path, argv):
+def write_check_run(res, out_path, argv, system="fastinflation", cert_id=None, run_slug=None):
     r = res
     cert = r["certificate"]
     try:
@@ -681,19 +688,22 @@ def write_check_run(res, out_path, argv):
     vn, vd = r["visibility"]
     lines = [
         "---",
+        "description: %s %s certificate checked by the kit's independent exact checker on %s — verdict %s."
+        % (r["short_name"], "x".join(map(str, r["inflation_size"])), platform.system(), "pass" if r["valid"] else "fail"),
         "status: %s" % ("pass" if r["valid"] else "fail"),
         "date: %s" % time.strftime("%Y-%m-%d"),
-        "generated-by: check_certificate.py v1.0 (--check-run)",
+        "generated-by: fast_inflation.py v1.1 (--check-run)",
         "---",
         "",
         "# %s %s certificate, independent Python checker" % (
             r["short_name"], "x".join(map(str, r["inflation_size"]))),
         "",
-        "**ID**: `cpt-fastinflation-run-%s-%s-py`" % (
-            r["target"], "".join(map(str, r["inflation_size"]))),
+        "**ID**: `cpt-%s-run-%s`" % (
+            system, run_slug or "%s-%s-py" % (r["target"], "".join(map(str, r["inflation_size"])))),
         "",
         "## Certificate",
         "",
+    ] + (["`%s`" % cert_id, ""] if cert_id else []) + [
         "- **File checked**: %s" % cert.path,
         "- **SHA-256 observed**: `%s`" % sha256_file(cert.path),
         "- **Auxiliary inputs observed**: none (target distribution %s with visibility"
@@ -702,10 +712,10 @@ def write_check_run(res, out_path, argv):
         "",
         "## Checker",
         "",
-        "`scripts/check_certificate.py` v1.0 — clean-room independent implementation",
+        "`scripts/checkers/fast_inflation.py` v1.1 — clean-room independent implementation",
         "(Python 3, exact integer/`fractions.Fraction` arithmetic). Shares no code with",
         "the certificate producer `fast-inflation` (C++); conventions documented in",
-        "`scripts/CERTIFICATE-SEMANTICS.md`.",
+        "`scripts/checkers/FAST-INFLATION-SEMANTICS.md`.",
         "",
         "## Environment",
         "",
@@ -737,7 +747,7 @@ def write_check_run(res, out_path, argv):
         "",
         "## Attestation",
         "",
-        "Record emitted by check_certificate.py --check-run at run time; the values",
+        "Record emitted by fast_inflation.py v1.1 --check-run at run time; the values",
         "above are the script's own outputs (stdout log of the same run).",
         "",
     ]
@@ -756,6 +766,12 @@ def main():
                     help="target distribution (default: srb)")
     ap.add_argument("--check-run", default=None, metavar="OUT.md",
                     help="write a CHECK-RUN record to this file")
+    ap.add_argument("--system", default="fastinflation",
+                    help="ID system prefix of the CHECK-RUN: cpt-<system>-run-<slug> (default: fastinflation)")
+    ap.add_argument("--cert-id", default=None, metavar="CPT-ID",
+                    help="CERTIFICATE artifact ID this run checks (written into the Certificate section)")
+    ap.add_argument("--run-slug", default=None,
+                    help="slug of the CHECK-RUN ID (default: <target>-<inflation size>-py)")
     args = ap.parse_args()
 
     path = args.certificate
@@ -802,7 +818,7 @@ def main():
               "not certify nonlocality.")
 
     if args.check_run:
-        write_check_run(res, args.check_run, sys.argv)
+        write_check_run(res, args.check_run, sys.argv, system=args.system, cert_id=args.cert_id, run_slug=args.run_slug)
         print("check-run record : %s" % args.check_run)
 
     return 0 if res["valid"] else 1

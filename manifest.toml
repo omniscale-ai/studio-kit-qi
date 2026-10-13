@@ -1,12 +1,10 @@
-# Constructor Studio QI Kit — Declarative Installation Manifest
+# Constructor Studio Theorem Kit — Declarative Installation Manifest (legacy schema; canonical file is .cf-studio-kit.toml)
 # Schema: kit-manifest.schema.json v1.0
 
 [manifest]
 version = "1.0"
 root = "{cf-studio-path}/config/kits/{slug}"
 user_modifiable = true
-
-# ── CLAIM artifact files ─────────────────────────────────────────────
 
 [[resources]]
 id = "claim_template"
@@ -18,7 +16,7 @@ user_modifiable = true
 
 [[resources]]
 id = "claim_rules"
-description = "CLAIM validation rules"
+description = "CLAIM authoring rules (loads principles.md first)"
 source = "artifacts/CLAIM/rules.md"
 default_path = "artifacts/CLAIM/rules.md"
 type = "file"
@@ -33,16 +31,6 @@ type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "claim_example"
-description = "CLAIM example artifact (EJM triangle nonlocality)"
-source = "artifacts/CLAIM/examples/example-ejm.md"
-default_path = "artifacts/CLAIM/examples/example-ejm.md"
-type = "file"
-user_modifiable = true
-
-# ── CERTIFICATE artifact files ───────────────────────────────────────
-
-[[resources]]
 id = "certificate_template"
 description = "CERTIFICATE artifact template"
 source = "artifacts/CERTIFICATE/template.md"
@@ -52,7 +40,7 @@ user_modifiable = true
 
 [[resources]]
 id = "certificate_rules"
-description = "CERTIFICATE validation rules"
+description = "CERTIFICATE authoring rules (loads principles.md first)"
 source = "artifacts/CERTIFICATE/rules.md"
 default_path = "artifacts/CERTIFICATE/rules.md"
 type = "file"
@@ -67,16 +55,6 @@ type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "certificate_example"
-description = "CERTIFICATE example artifact (EJM 2x2x4 Farkas certificate)"
-source = "artifacts/CERTIFICATE/examples/example-ejm.md"
-default_path = "artifacts/CERTIFICATE/examples/example-ejm.md"
-type = "file"
-user_modifiable = true
-
-# ── CHECK-RUN artifact files ─────────────────────────────────────────
-
-[[resources]]
 id = "check_run_template"
 description = "CHECK-RUN artifact template"
 source = "artifacts/CHECK-RUN/template.md"
@@ -86,7 +64,7 @@ user_modifiable = true
 
 [[resources]]
 id = "check_run_rules"
-description = "CHECK-RUN validation rules"
+description = "CHECK-RUN authoring rules (loads principles.md first)"
 source = "artifacts/CHECK-RUN/rules.md"
 default_path = "artifacts/CHECK-RUN/rules.md"
 type = "file"
@@ -101,30 +79,26 @@ type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "check_run_example"
-description = "CHECK-RUN example artifact (EJM certificate reproduction, macOS/arm64)"
-source = "artifacts/CHECK-RUN/examples/example-ejm-macos.md"
-default_path = "artifacts/CHECK-RUN/examples/example-ejm-macos.md"
-type = "file"
-user_modifiable = true
-
-# ── Validation constraints ───────────────────────────────────────────
-
-[[resources]]
-id = "constraints"
-description = "Deterministic validation constraints for QI kit artifact kinds"
-source = "constraints.toml"
-default_path = "constraints.toml"
-type = "file"
-user_modifiable = true
-
-# ── THEOREM / PROOF-MAP / LEMMA artifact files (theorem layer) ───────
-
-[[resources]]
 id = "theorem_template"
 description = "THEOREM artifact template"
 source = "artifacts/THEOREM/template.md"
 default_path = "artifacts/THEOREM/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "theorem_rules"
+description = "THEOREM authoring rules (loads principles.md first)"
+source = "artifacts/THEOREM/rules.md"
+default_path = "artifacts/THEOREM/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "theorem_checklist"
+description = "THEOREM review checklist"
+source = "artifacts/THEOREM/checklist.md"
+default_path = "artifacts/THEOREM/checklist.md"
 type = "file"
 user_modifiable = true
 
@@ -137,6 +111,22 @@ type = "file"
 user_modifiable = true
 
 [[resources]]
+id = "proof_map_rules"
+description = "PROOF-MAP authoring rules (loads principles.md first)"
+source = "artifacts/PROOF-MAP/rules.md"
+default_path = "artifacts/PROOF-MAP/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "proof_map_checklist"
+description = "PROOF-MAP review checklist"
+source = "artifacts/PROOF-MAP/checklist.md"
+default_path = "artifacts/PROOF-MAP/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
 id = "lemma_template"
 description = "LEMMA artifact template"
 source = "artifacts/LEMMA/template.md"
@@ -144,21 +134,193 @@ default_path = "artifacts/LEMMA/template.md"
 type = "file"
 user_modifiable = true
 
-# ── Scripts (computational gates) ────────────────────────────────────
+[[resources]]
+id = "lemma_rules"
+description = "LEMMA authoring rules (loads principles.md first)"
+source = "artifacts/LEMMA/rules.md"
+default_path = "artifacts/LEMMA/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "lemma_checklist"
+description = "LEMMA review checklist"
+source = "artifacts/LEMMA/checklist.md"
+default_path = "artifacts/LEMMA/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_template"
+description = "VERIFICATION-PLAN artifact template"
+source = "artifacts/VERIFICATION-PLAN/template.md"
+default_path = "artifacts/VERIFICATION-PLAN/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_rules"
+description = "VERIFICATION-PLAN authoring rules (loads principles.md first)"
+source = "artifacts/VERIFICATION-PLAN/rules.md"
+default_path = "artifacts/VERIFICATION-PLAN/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "vplan_checklist"
+description = "VERIFICATION-PLAN review checklist"
+source = "artifacts/VERIFICATION-PLAN/checklist.md"
+default_path = "artifacts/VERIFICATION-PLAN/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "rplan_template"
+description = "RESEARCH-PLAN artifact template"
+source = "artifacts/RESEARCH-PLAN/template.md"
+default_path = "artifacts/RESEARCH-PLAN/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "rplan_rules"
+description = "RESEARCH-PLAN authoring rules (loads principles.md first)"
+source = "artifacts/RESEARCH-PLAN/rules.md"
+default_path = "artifacts/RESEARCH-PLAN/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "rplan_checklist"
+description = "RESEARCH-PLAN review checklist"
+source = "artifacts/RESEARCH-PLAN/checklist.md"
+default_path = "artifacts/RESEARCH-PLAN/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "conjecture_template"
+description = "CONJECTURE artifact template"
+source = "artifacts/CONJECTURE/template.md"
+default_path = "artifacts/CONJECTURE/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "conjecture_rules"
+description = "CONJECTURE authoring rules (loads principles.md first)"
+source = "artifacts/CONJECTURE/rules.md"
+default_path = "artifacts/CONJECTURE/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "conjecture_checklist"
+description = "CONJECTURE review checklist"
+source = "artifacts/CONJECTURE/checklist.md"
+default_path = "artifacts/CONJECTURE/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "proof_attempt_template"
+description = "PROOF-ATTEMPT artifact template"
+source = "artifacts/PROOF-ATTEMPT/template.md"
+default_path = "artifacts/PROOF-ATTEMPT/template.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "proof_attempt_rules"
+description = "PROOF-ATTEMPT authoring rules (loads principles.md first)"
+source = "artifacts/PROOF-ATTEMPT/rules.md"
+default_path = "artifacts/PROOF-ATTEMPT/rules.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "proof_attempt_checklist"
+description = "PROOF-ATTEMPT review checklist"
+source = "artifacts/PROOF-ATTEMPT/checklist.md"
+default_path = "artifacts/PROOF-ATTEMPT/checklist.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "principles"
+description = "Cross-cutting invariants P1–P13 loaded first by every rules.md"
+source = "principles.md"
+default_path = "principles.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "agents"
+description = "Agent quick reference: the ten artifact kinds, their resources, and navigation rules"
+source = "AGENTS.md"
+default_path = "AGENTS.md"
+type = "file"
+user_modifiable = true
 
 [[resources]]
 id = "graph_gate"
-description = "Cross-artifact semantic gate (status consistency, load-bearing resolution)"
+description = "Cross-artifact semantic gate G1–G8 (status consistency, load-bearing resolution, conjecture/attempt/register consistency, owned-sections hash, faithfulness cross-check)"
 source = "scripts/graph_gate.py"
 default_path = "scripts/graph_gate.py"
 type = "file"
 user_modifiable = false
 
-# ── Workflows ────────────────────────────────────────────────────────
+[[resources]]
+id = "attest_lean"
+description = "Lean 4 attestation: builds the project, prints axioms and signature of one declaration, emits a PROOF-ATTEMPT with a script-owned verdict vector"
+source = "scripts/attest_lean.py"
+default_path = "scripts/attest_lean.py"
+type = "file"
+user_modifiable = false
+
+[[resources]]
+id = "checkers_readme"
+description = "Contract for pluggable certificate checkers (one script per format, each generating CHECK-RUN artifacts)"
+source = "scripts/checkers/README.md"
+default_path = "scripts/checkers/README.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "checker_fast_inflation"
+description = "Checker for fast-inflation nonlocality certificates: independent exact-arithmetic implementation, generates CHECK-RUN records"
+source = "scripts/checkers/fast_inflation.py"
+default_path = "scripts/checkers/fast_inflation.py"
+type = "file"
+user_modifiable = false
+
+[[resources]]
+id = "checker_fast_inflation_semantics"
+description = "Clean-room specification of the fast-inflation certificate format and checking predicate"
+source = "scripts/checkers/FAST-INFLATION-SEMANTICS.md"
+default_path = "scripts/checkers/FAST-INFLATION-SEMANTICS.md"
+type = "file"
+user_modifiable = false
+
+[[resources]]
+id = "wf_plan_verification"
+description = "Workflow: interactive intake brainstorm producing a VERIFICATION-PLAN (gates the verification workflows)"
+source = "workflows/plan-verification.md"
+default_path = "workflows/plan-verification.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "wf_plan_research"
+description = "Workflow: interactive intake brainstorm producing a RESEARCH-PLAN (gates propose-conjecture and attempt-proof)"
+source = "workflows/plan-research.md"
+default_path = "workflows/plan-research.md"
+type = "file"
+user_modifiable = true
 
 [[resources]]
 id = "wf_verify_certificate"
-description = "Workflow: run checker, record CHECK-RUN, update statuses"
+description = "Workflow: run the format's checker, record CHECK-RUN, update statuses"
 source = "workflows/verify-certificate.md"
 default_path = "workflows/verify-certificate.md"
 type = "file"
@@ -174,7 +336,7 @@ user_modifiable = true
 
 [[resources]]
 id = "wf_hunt_counterexample"
-description = "Workflow: certificate-producing search over finite model classes"
+description = "Workflow: certificate-producing search over finite classes; feeds CONJECTURE evidence and refutations"
 source = "workflows/hunt-counterexample.md"
 default_path = "workflows/hunt-counterexample.md"
 type = "file"
@@ -189,59 +351,433 @@ type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "check_certificate"
-description = "Independent exact-arithmetic checker for fast-inflation certificates (generates CHECK-RUN records)"
-source = "scripts/check_certificate.py"
-default_path = "scripts/check_certificate.py"
-type = "file"
-user_modifiable = false
-
-[[resources]]
-id = "certificate_semantics"
-description = "Clean-room specification of the certificate format and checking predicate"
-source = "scripts/CERTIFICATE-SEMANTICS.md"
-default_path = "scripts/CERTIFICATE-SEMANTICS.md"
-type = "file"
-user_modifiable = false
-
-# ── VERIFICATION-PLAN artifact files (intake brainstorm) ─────────────
-
-[[resources]]
-id = "vplan_template"
-description = "VERIFICATION-PLAN artifact template"
-source = "artifacts/VERIFICATION-PLAN/template.md"
-default_path = "artifacts/VERIFICATION-PLAN/template.md"
+id = "wf_propose_conjecture"
+description = "Workflow: register a CONJECTURE with an exact instance check, a compiled formal statement and an independent faithfulness cross-check"
+source = "workflows/propose-conjecture.md"
+default_path = "workflows/propose-conjecture.md"
 type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "vplan_rules"
-description = "VERIFICATION-PLAN validation rules"
-source = "artifacts/VERIFICATION-PLAN/rules.md"
-default_path = "artifacts/VERIFICATION-PLAN/rules.md"
+id = "wf_attempt_proof"
+description = "Workflow: one PROOF-ATTEMPT per route, attested by attest_lean.py, statuses derived"
+source = "workflows/attempt-proof.md"
+default_path = "workflows/attempt-proof.md"
 type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "vplan_checklist"
-description = "VERIFICATION-PLAN review checklist"
-source = "artifacts/VERIFICATION-PLAN/checklist.md"
-default_path = "artifacts/VERIFICATION-PLAN/checklist.md"
+id = "examples_readme"
+description = "Index of the example packs"
+source = "examples/README.md"
+default_path = "examples/README.md"
 type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "vplan_example"
-description = "VERIFICATION-PLAN example (EJM/Gitton verification intake)"
-source = "artifacts/VERIFICATION-PLAN/examples/example-ejm-plan.md"
-default_path = "artifacts/VERIFICATION-PLAN/examples/example-ejm-plan.md"
+id = "ex_qi_certificate_example_ejm_md"
+description = "CERTIFICATE example — quantum information theory pack: ejm"
+source = "examples/qi/CERTIFICATE/example-ejm.md"
+default_path = "examples/qi/CERTIFICATE/example-ejm.md"
 type = "file"
 user_modifiable = true
 
 [[resources]]
-id = "wf_plan_verification"
-description = "Workflow: interactive intake brainstorm producing a VERIFICATION-PLAN (gates all other workflows)"
-source = "workflows/plan-verification.md"
-default_path = "workflows/plan-verification.md"
+id = "ex_qi_check_run_example_ejm_macos_md"
+description = "CHECK-RUN example (script-generated) — quantum information theory pack: ejm-macos"
+source = "examples/qi/CHECK-RUN/example-ejm-macos.md"
+default_path = "examples/qi/CHECK-RUN/example-ejm-macos.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_check_run_example_srb_222_linux_py_md"
+description = "CHECK-RUN example (script-generated) — quantum information theory pack: srb-222-linux-py"
+source = "examples/qi/CHECK-RUN/example-srb-222-linux-py.md"
+default_path = "examples/qi/CHECK-RUN/example-srb-222-linux-py.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_claim_example_ejm_md"
+description = "CLAIM example — quantum information theory pack: ejm"
+source = "examples/qi/CLAIM/example-ejm.md"
+default_path = "examples/qi/CLAIM/example-ejm.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_conjecture_example_bell_odd_sign_values_md"
+description = "CONJECTURE example — quantum information theory pack: bell-odd-sign-values"
+source = "examples/qi/CONJECTURE/example-bell-odd-sign-values.md"
+default_path = "examples/qi/CONJECTURE/example-bell-odd-sign-values.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_conjecture_example_bell_pm_coeff_values_md"
+description = "CONJECTURE example — quantum information theory pack: bell-pm-coeff-values"
+source = "examples/qi/CONJECTURE/example-bell-pm-coeff-values.md"
+default_path = "examples/qi/CONJECTURE/example-bell-pm-coeff-values.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_conjecture_example_chsh_det_bound_md"
+description = "CONJECTURE example — quantum information theory pack: chsh-det-bound"
+source = "examples/qi/CONJECTURE/example-chsh-det-bound.md"
+default_path = "examples/qi/CONJECTURE/example-chsh-det-bound.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_bsc_sdpi_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-bsc-sdpi"
+source = "examples/qi/LEMMA/example-pgr-bsc-sdpi.md"
+default_path = "examples/qi/LEMMA/example-pgr-bsc-sdpi.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_compactness_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-compactness"
+source = "examples/qi/LEMMA/example-pgr-compactness.md"
+default_path = "examples/qi/LEMMA/example-pgr-compactness.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_det_identity_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-det-identity"
+source = "examples/qi/LEMMA/example-pgr-det-identity.md"
+default_path = "examples/qi/LEMMA/example-pgr-det-identity.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_erasure_identity_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-erasure-identity"
+source = "examples/qi/LEMMA/example-pgr-erasure-identity.md"
+default_path = "examples/qi/LEMMA/example-pgr-erasure-identity.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_ggk_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-ggk"
+source = "examples/qi/LEMMA/example-pgr-ggk.md"
+default_path = "examples/qi/LEMMA/example-pgr-ggk.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_no_channel_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-no-channel"
+source = "examples/qi/LEMMA/example-pgr-no-channel.md"
+default_path = "examples/qi/LEMMA/example-pgr-no-channel.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lemma_example_pgr_slices_product_md"
+description = "LEMMA example (claim-graph node) — quantum information theory pack: pgr-slices-product"
+source = "examples/qi/LEMMA/example-pgr-slices-product.md"
+default_path = "examples/qi/LEMMA/example-pgr-slices-product.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_proof_attempt_example_bell_pm_coeff_values_refute_build_log"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — quantum information theory pack: bell-pm-coeff-values-refute.build (full build/query log)"
+source = "examples/qi/PROOF-ATTEMPT/example-bell-pm-coeff-values-refute.build.log"
+default_path = "examples/qi/PROOF-ATTEMPT/example-bell-pm-coeff-values-refute.build.log"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_proof_attempt_example_bell_pm_coeff_values_refute_md"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — quantum information theory pack: bell-pm-coeff-values-refute"
+source = "examples/qi/PROOF-ATTEMPT/example-bell-pm-coeff-values-refute.md"
+default_path = "examples/qi/PROOF-ATTEMPT/example-bell-pm-coeff-values-refute.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_proof_attempt_example_chsh_det_bound_lean_build_log"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — quantum information theory pack: chsh-det-bound-lean.build (full build/query log)"
+source = "examples/qi/PROOF-ATTEMPT/example-chsh-det-bound-lean.build.log"
+default_path = "examples/qi/PROOF-ATTEMPT/example-chsh-det-bound-lean.build.log"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_proof_attempt_example_chsh_det_bound_lean_md"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — quantum information theory pack: chsh-det-bound-lean"
+source = "examples/qi/PROOF-ATTEMPT/example-chsh-det-bound-lean.md"
+default_path = "examples/qi/PROOF-ATTEMPT/example-chsh-det-bound-lean.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_proof_map_example_pgr_md"
+description = "PROOF-MAP example — quantum information theory pack: pgr"
+source = "examples/qi/PROOF-MAP/example-pgr.md"
+default_path = "examples/qi/PROOF-MAP/example-pgr.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_readme_md"
+description = "Example pack index: quantum information theory"
+source = "examples/qi/README.md"
+default_path = "examples/qi/README.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_research_plan_example_chsh_md"
+description = "RESEARCH-PLAN example — quantum information theory pack: chsh"
+source = "examples/qi/RESEARCH-PLAN/example-chsh.md"
+default_path = "examples/qi/RESEARCH-PLAN/example-chsh.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_theorem_example_pgr_md"
+description = "THEOREM example — quantum information theory pack: pgr"
+source = "examples/qi/THEOREM/example-pgr.md"
+default_path = "examples/qi/THEOREM/example-pgr.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_verification_plan_example_ejm_plan_md"
+description = "VERIFICATION-PLAN example — quantum information theory pack: ejm-plan"
+source = "examples/qi/VERIFICATION-PLAN/example-ejm-plan.md"
+default_path = "examples/qi/VERIFICATION-PLAN/example-ejm-plan.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_chsh_enumerate_py"
+description = "Exploration record (exact enumeration) — quantum information theory pack"
+source = "examples/qi/chsh-enumerate.py"
+default_path = "examples/qi/chsh-enumerate.py"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_gitignore"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: .gitignore"
+source = "examples/qi/lean-chsh/.gitignore"
+default_path = "examples/qi/lean-chsh/.gitignore"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_chsh_lean"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: Chsh.lean"
+source = "examples/qi/lean-chsh/Chsh.lean"
+default_path = "examples/qi/lean-chsh/Chsh.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_instances_lean"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: Instances.lean"
+source = "examples/qi/lean-chsh/Instances.lean"
+default_path = "examples/qi/lean-chsh/Instances.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_stubs_lean"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: Stubs.lean"
+source = "examples/qi/lean-chsh/Stubs.lean"
+default_path = "examples/qi/lean-chsh/Stubs.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_lake_manifest_json"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: lake-manifest.json"
+source = "examples/qi/lean-chsh/lake-manifest.json"
+default_path = "examples/qi/lean-chsh/lake-manifest.json"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_lakefile_toml"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: lakefile.toml"
+source = "examples/qi/lean-chsh/lakefile.toml"
+default_path = "examples/qi/lean-chsh/lakefile.toml"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_lean_chsh_lean_toolchain"
+description = "Example Lean project (core Lean, no Mathlib) — quantum information theory pack: lean-toolchain"
+source = "examples/qi/lean-chsh/lean-toolchain"
+default_path = "examples/qi/lean-chsh/lean-toolchain"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_records_readme_md"
+description = "quantum information theory pack file: records/README.md"
+source = "examples/qi/records/README.md"
+default_path = "examples/qi/records/README.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_qi_records_checkrun_srb_222_macos_20260810_md"
+description = "quantum information theory pack file: records/checkrun-srb-222-macos-20260810.md"
+source = "examples/qi/records/checkrun-srb-222-macos-20260810.md"
+default_path = "examples/qi/records/checkrun-srb-222-macos-20260810.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_conjecture_example_euler_all_prime_md"
+description = "CONJECTURE example — number theory (Euler's polynomial) pack: euler-all-prime"
+source = "examples/euler-polynomial/CONJECTURE/example-euler-all-prime.md"
+default_path = "examples/euler-polynomial/CONJECTURE/example-euler-all-prime.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_conjecture_example_euler_no_small_prime_factor_md"
+description = "CONJECTURE example — number theory (Euler's polynomial) pack: euler-no-small-prime-factor"
+source = "examples/euler-polynomial/CONJECTURE/example-euler-no-small-prime-factor.md"
+default_path = "examples/euler-polynomial/CONJECTURE/example-euler-no-small-prime-factor.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_conjecture_example_euler_prime_below_40_md"
+description = "CONJECTURE example — number theory (Euler's polynomial) pack: euler-prime-below-40"
+source = "examples/euler-polynomial/CONJECTURE/example-euler-prime-below-40.md"
+default_path = "examples/euler-polynomial/CONJECTURE/example-euler-prime-below-40.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_proof_attempt_example_euler_all_prime_refute_build_log"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — number theory (Euler's polynomial) pack: euler-all-prime-refute.build (full build/query log)"
+source = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-all-prime-refute.build.log"
+default_path = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-all-prime-refute.build.log"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_proof_attempt_example_euler_all_prime_refute_md"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — number theory (Euler's polynomial) pack: euler-all-prime-refute"
+source = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-all-prime-refute.md"
+default_path = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-all-prime-refute.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_proof_attempt_example_euler_prime_below_40_lean_build_log"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — number theory (Euler's polynomial) pack: euler-prime-below-40-lean.build (full build/query log)"
+source = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-prime-below-40-lean.build.log"
+default_path = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-prime-below-40-lean.build.log"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_proof_attempt_example_euler_prime_below_40_lean_md"
+description = "PROOF-ATTEMPT example (generated by attest_lean.py) — number theory (Euler's polynomial) pack: euler-prime-below-40-lean"
+source = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-prime-below-40-lean.md"
+default_path = "examples/euler-polynomial/PROOF-ATTEMPT/example-euler-prime-below-40-lean.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_readme_md"
+description = "Example pack index: number theory (Euler's polynomial)"
+source = "examples/euler-polynomial/README.md"
+default_path = "examples/euler-polynomial/README.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_research_plan_example_euler_md"
+description = "RESEARCH-PLAN example — number theory (Euler's polynomial) pack: euler"
+source = "examples/euler-polynomial/RESEARCH-PLAN/example-euler.md"
+default_path = "examples/euler-polynomial/RESEARCH-PLAN/example-euler.md"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_enumerate_py"
+description = "Exploration record (exact enumeration) — number theory (Euler's polynomial) pack"
+source = "examples/euler-polynomial/enumerate.py"
+default_path = "examples/euler-polynomial/enumerate.py"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_gitignore"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: .gitignore"
+source = "examples/euler-polynomial/lean-euler/.gitignore"
+default_path = "examples/euler-polynomial/lean-euler/.gitignore"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_euler_lean"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: Euler.lean"
+source = "examples/euler-polynomial/lean-euler/Euler.lean"
+default_path = "examples/euler-polynomial/lean-euler/Euler.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_instances_lean"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: Instances.lean"
+source = "examples/euler-polynomial/lean-euler/Instances.lean"
+default_path = "examples/euler-polynomial/lean-euler/Instances.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_stubs_lean"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: Stubs.lean"
+source = "examples/euler-polynomial/lean-euler/Stubs.lean"
+default_path = "examples/euler-polynomial/lean-euler/Stubs.lean"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_lake_manifest_json"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: lake-manifest.json"
+source = "examples/euler-polynomial/lean-euler/lake-manifest.json"
+default_path = "examples/euler-polynomial/lean-euler/lake-manifest.json"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_lakefile_toml"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: lakefile.toml"
+source = "examples/euler-polynomial/lean-euler/lakefile.toml"
+default_path = "examples/euler-polynomial/lean-euler/lakefile.toml"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "ex_nt_lean_euler_lean_toolchain"
+description = "Example Lean project (core Lean, no Mathlib) — number theory (Euler's polynomial) pack: lean-toolchain"
+source = "examples/euler-polynomial/lean-euler/lean-toolchain"
+default_path = "examples/euler-polynomial/lean-euler/lean-toolchain"
+type = "file"
+user_modifiable = true
+
+[[resources]]
+id = "constraints"
+description = "Deterministic validation constraints for the ten artifact kinds"
+source = "constraints.toml"
+default_path = "constraints.toml"
 type = "file"
 user_modifiable = true

@@ -1,0 +1,17 @@
+# attest_lean.py v1.0 — 2026-10-13 16:21:52 +0200
+# invocation: python3 scripts/attest_lean.py --project examples/qi/lean-chsh --file Chsh.lean --decl Chsh.chsh_det_le_two --conjecture examples/qi/CONJECTURE/example-chsh-det-bound.md --slug chsh-det-bound-lean --out examples/qi/PROOF-ATTEMPT/example-chsh-det-bound-lean.md --route-note 'case split on the four Bool arguments, then decide on the 16 closed Int inequalities; written by the kit maintainer'
+
+## lake build (cwd examples/qi/lean-chsh)
+Build completed successfully (3 jobs).
+## exit: 0
+
+## query file
+import Chsh
+#print axioms Chsh.chsh_det_le_two
+#check @Chsh.chsh_det_le_two
+
+## lake env lean <query>
+'Chsh.chsh_det_le_two' does not depend on any axioms
+Chsh.chsh_det_le_two : ∀ (a0 a1 b0 b1 : Bool), Chsh.chsh a0 a1 b0 b1 ≤ 2
+## exit: 0
+

@@ -1,0 +1,17 @@
+# attest_lean.py v1.0 — 2026-10-13 16:32:38 +0200
+# invocation: python3 scripts/attest_lean.py --project examples/euler-polynomial/lean-euler --file Euler.lean --decl Euler.not_all_prime --refutes --conjecture examples/euler-polynomial/CONJECTURE/example-euler-all-prime.md --slug euler-all-prime-refute --out examples/euler-polynomial/PROOF-ATTEMPT/example-euler-all-prime-refute.md --route-note 'witness n = 40 from the exploration record; instantiate the universal statement at 40 and decide isPrime 1681 = true, which trial division up to 41 evaluates to false; written by the kit maintainer'
+
+## lake build (cwd examples/euler-polynomial/lean-euler)
+Build completed successfully (3 jobs).
+## exit: 0
+
+## query file
+import Euler
+#print axioms Euler.not_all_prime
+#check @Euler.not_all_prime
+
+## lake env lean <query>
+'Euler.not_all_prime' does not depend on any axioms
+Euler.not_all_prime : ¬∀ (n : Nat), Euler.isPrime (Euler.f n) = true
+## exit: 0
+

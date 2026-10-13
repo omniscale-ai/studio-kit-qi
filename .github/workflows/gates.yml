@@ -5,8 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Cross-artifact semantic gate
-        run: python3 scripts/graph_gate.py artifacts
+      - name: Cross-artifact semantic gate, one run per example pack
+        run: |
+          for pack in examples/*/; do
+            echo "== $pack"
+            python3 scripts/graph_gate.py "$pack"
+          done
   certificate-check:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +22,65 @@ jobs:
       - name: Verify declared certificate hash
         run: |
           echo "6db0eb30dffb77b5603cde96efd9ad5ffac93ac0032946a7a94b81e527fa72d4  fi/data/srb_222_certificate.txt" | sha256sum -c -
-      - name: Independent exact re-check (SRB 2x2x2)
+      - name: Independent exact re-check (SRB 2x2x2) by the pluggable checker
         run: |
-          python3 scripts/check_certificate.py fi/data/srb_222_certificate.txt --repo fi --target srb | tee check.log
+          python3 scripts/checkers/fast_inflation.py fi/data/srb_222_certificate.txt --repo fi --target srb --system qi --check-run /tmp/srb-run.md | tee check.log
           grep -q "VERDICT          : VALID" check.log
+          grep -q "^status: pass" /tmp/srb-run.md
+  lean-attest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (pinned toolchains are fetched from each project's lean-toolchain on first use)
+        run: |
+          curl -sSfL https://github.com/leanprover/elan/releases/latest/download/elan-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: QI pack — re-attest the passing PROOF-ATTEMPT (CHSH deterministic bound)
+        run: |
+          python3 scripts/attest_lean.py --project examples/qi/lean-chsh --file Chsh.lean \
+            --decl Chsh.chsh_det_le_two \
+            --conjecture examples/qi/CONJECTURE/example-chsh-det-bound.md \
+            --slug chsh-det-bound-lean --out /tmp/attempt-pass.md | tee attest-pass.log
+          grep -q "^STATUS           : PASS" attest-pass.log
+      - name: QI pack — re-attest the refuting PROOF-ATTEMPT (all ±1 patterns)
+        run: |
+          python3 scripts/attest_lean.py --project examples/qi/lean-chsh --file Chsh.lean \
+            --decl Chsh.not_bell_pm_one_in_pm_two --refutes \
+            --conjecture examples/qi/CONJECTURE/example-bell-pm-coeff-values.md \
+            --slug bell-pm-coeff-values-refute --out /tmp/attempt-refute.md | tee attest-refute.log
+          grep -q "^STATUS           : REFUTED" attest-refute.log
+      - name: Number-theory pack — re-attest the refutation (Euler polynomial at n = 40)
+        run: |
+          python3 scripts/attest_lean.py --project examples/euler-polynomial/lean-euler --file Euler.lean \
+            --decl Euler.not_all_prime --refutes \
+            --conjecture examples/euler-polynomial/CONJECTURE/example-euler-all-prime.md \
+            --slug euler-all-prime-refute --out /tmp/attempt-euler-refute.md | tee attest-euler-refute.log
+          grep -q "^STATUS           : REFUTED" attest-euler-refute.log
+      - name: Number-theory pack — re-attest the proof (prime for every n < 40)
+        run: |
+          python3 scripts/attest_lean.py --project examples/euler-polynomial/lean-euler --file Euler.lean \
+            --decl Euler.prime_below_40 \
+            --conjecture examples/euler-polynomial/CONJECTURE/example-euler-prime-below-40.md \
+            --slug euler-prime-below-40-lean --out /tmp/attempt-euler-pass.md | tee attest-euler-pass.log
+          grep -q "^STATUS           : PASS" attest-euler-pass.log
+      - name: Instance agreement — the Lean definitions reproduce the exploration records (P13)
+        run: |
+          ( cd examples/qi/lean-chsh && lake env lean Instances.lean ) | tee instances-qi.log
+          grep -qx "\[-2, 2\]" instances-qi.log
+          grep -qx "4" instances-qi.log
+          grep -qx "true" instances-qi.log
+          grep -qx "\[-4, 0, 4\]" instances-qi.log
+          ( cd examples/euler-polynomial/lean-euler && lake env lean Instances.lean ) | tee instances-nt.log
+          grep -qx "1681" instances-nt.log
+          grep -qx "true" instances-nt.log
+          grep -qx "\[\]" instances-nt.log
+      - name: Exploration records still agree with the CONJECTURE evidence
+        run: |
+          python3 examples/qi/chsh-enumerate.py | tee enumerate-qi.log
+          grep -q "values ⊆ {-2, 2}: True" enumerate-qi.log
+          grep -q "E = 4" enumerate-qi.log
+          python3 examples/euler-polynomial/enumerate.py | tee enumerate-nt.log
+          grep -q "prime for every n < 40: True" enumerate-nt.log
+          grep -q "f(40) = 1681" enumerate-nt.log
+          grep -q "n < 100000: True" enumerate-nt.log

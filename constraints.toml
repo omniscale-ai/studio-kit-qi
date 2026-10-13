@@ -24,7 +24,7 @@ required = true
 multiple = false
 numbered = false
 pattern = "Model Class"
-description = "The class of models the claim excludes (e.g., 3-local triangle models)."
+description = "The class of objects the claim ranges over or excludes (e.g. 3-local triangle models, assignments of a CNF, graphs of a given order)."
 
 [[artifacts.CLAIM.headings]]
 id = "claim-data"
@@ -33,7 +33,7 @@ required = true
 multiple = false
 numbered = false
 pattern = "Exact Data"
-description = "The mathematical object, in exact rational form. No floating point."
+description = "The mathematical object in exact form (integers, rationals, finite symbolic data). No floating point."
 
 [[artifacts.CLAIM.headings]]
 id = "claim-provenance"
@@ -185,7 +185,7 @@ description = "Who/what produced this record. CHECK-RUN records are script-gener
 
 [artifacts.CLAIM.identifiers.claim]
 name = "Impossibility Claim"
-description = "A precise machine-checkable impossibility statement about a finite probabilistic model."
+description = "A precise machine-checkable finite statement (typically an impossibility) with exact data and an external witness."
 required = true
 priority = false
 to_code = false
@@ -465,3 +465,356 @@ priority = false
 to_code = false
 template = "cpt-{system}-vplan-{slug}"
 headings = ["vplan-h1-title"]
+
+# ── RESEARCH-PLAN heading outline ─────────────────────────────────────
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Research plan title (H1)."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-research-question"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Research Question"
+description = "The question verbatim, the object class, the deliverable shape."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-prior-knowledge"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Prior Knowledge"
+description = "Known results and Mathlib coverage, each verified or assumed."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-definitions-concordance"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Definitions Concordance"
+description = "Concept ↔ informal notation ↔ Lean declaration, checked how and when."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-formalization-cost"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Formalization Cost"
+description = "Build times, effort per route, compute, licences — confirmed by a human with name and date."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-budget"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Budget"
+description = "Attempts per conjecture per route, total attempts, time box, exploration compute."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-phase-sequence"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Phase Sequence"
+description = "EXPLORE → PROPOSE → CHECK → ATTEMPT → REPORT with a human gate per phase."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-conjecture-policy"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Conjecture Policy"
+description = "Admissible origins of conjectures, allowed routes, allowed axiom set."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-conjecture-register"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Conjecture Register"
+description = "One row per CONJECTURE with its status copied from the artifact (graph_gate G8)."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-success-criteria"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Success Criteria"
+description = "The frozen verdict vector every PROOF-ATTEMPT answers."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-criterion"
+level = 3
+required = true
+multiple = true
+numbered = false
+description = "One success criterion block, defined by its **ID** line."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-stop-conditions"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Stop Conditions"
+description = "When the run stops early."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-decisions-log"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Decisions Log"
+description = "Brainstorm record: question, options with trade-offs, choice."
+
+[[artifacts.RESEARCH-PLAN.headings]]
+id = "rplan-approval"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Approval"
+description = "Who approved, when, confirming cost and criteria. Required for status: approved."
+
+# ── RESEARCH-PLAN identifiers ─────────────────────────────────────────
+
+[artifacts.RESEARCH-PLAN.identifiers.rplan]
+name = "Research Plan"
+description = "The approved intake decisions of one discovery run: question, concordance, cost, budget, policy, register, frozen criteria."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-rplan-{slug}"
+headings = ["rplan-h1-title"]
+
+[artifacts.RESEARCH-PLAN.identifiers.criterion]
+name = "Success criterion"
+description = "One declared success criterion; every PROOF-ATTEMPT verdict row references one of these."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-criterion-{slug}"
+headings = ["rplan-criterion"]
+
+[artifacts.RESEARCH-PLAN.identifiers.criterion.references.PROOF-ATTEMPT]
+headings = ["attempt-verdict"]
+
+# ── CONJECTURE heading outline ────────────────────────────────────────
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Conjecture title (H1)."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-statement"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Statement"
+description = "The informal statement, quantifiers explicit, scope equal to the checked region."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-formal-statement"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Formal Statement"
+description = "The compiled `#check` signature of a stub and its concordance (faithfulness is established in the Faithfulness Cross-Check section)."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-faithfulness-cross-check"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Faithfulness Cross-Check"
+description = "Independent back-translation of the Lean block compared with the Statement, instance agreement with the exploration record, and the dated confirmation (P13)."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-origin"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Origin"
+description = "Exactly one origin from the plan's Conjecture Policy, with IDs."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-evidence"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Evidence"
+description = "Exact instance checks before any attempt: region, method, record, result."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-relations"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Relations"
+description = "Implies / strengthens / restricts other conjectures; refuted ancestors named."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-attempts"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Attempts"
+description = "PROOF-ATTEMPT IDs, most recent first, with route and status."
+
+[[artifacts.CONJECTURE.headings]]
+id = "conj-status"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Status"
+description = "Proved by / Refuted by / Withdrawn by lines that graph_gate G6 resolves."
+
+# ── CONJECTURE identifiers ────────────────────────────────────────────
+
+[artifacts.CONJECTURE.identifiers.conj]
+name = "Conjecture"
+description = "One new statement under a RESEARCH-PLAN with its origin, evidence, attempts and derived status."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-conj-{slug}"
+headings = ["conj-h1-title"]
+
+[artifacts.CONJECTURE.identifiers.conj.references.PROOF-ATTEMPT]
+headings = ["attempt-conjecture"]
+
+[artifacts.CONJECTURE.identifiers.conj.references.RESEARCH-PLAN]
+headings = ["rplan-conjecture-register"]
+
+# ── PROOF-ATTEMPT heading outline ─────────────────────────────────────
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-h1-title"
+level = 1
+required = true
+multiple = false
+numbered = false
+description = "Attempt title (H1)."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-conjecture"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Conjecture"
+description = "Script-owned: the CONJECTURE ID, the relation (proves / refutes), the expected formal statement."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-route"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Route"
+description = "Script-owned: tier, toolchain, pinned packages, environment, tools (informational)."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-development"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Development"
+description = "Script-owned: project commit, file hash, declaration, signature, build command."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-assumptions"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Assumptions"
+description = "Agent-filled: every fact relied on with its licence."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-build-log"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Build Log"
+description = "Script-owned: build output tail, `#print axioms` and `#check` output verbatim."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-deviations"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Deviations"
+description = "Agent-filled: departures from the plan, feedback verbatim, or None."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-verdict"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Verdict"
+description = "Script-owned: one row per RESEARCH-PLAN criterion, result pass / fail, status line."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-handoff"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Handoff"
+description = "Agent-filled: remaining goals, unused hypotheses, what would refute, budget limit counted."
+
+[[artifacts.PROOF-ATTEMPT.headings]]
+id = "attempt-attestation"
+level = 2
+required = true
+multiple = false
+numbered = false
+pattern = "Attestation"
+description = "Script-owned: invocation, full log with hash, owned-sections SHA-256."
+
+# ── PROOF-ATTEMPT identifiers ─────────────────────────────────────────
+
+[artifacts.PROOF-ATTEMPT.identifiers.attempt]
+name = "Proof Attempt"
+description = "One attempt at one conjecture by one route, attested by script."
+required = true
+priority = false
+to_code = false
+template = "cpt-{system}-attempt-{slug}"
+headings = ["attempt-h1-title"]
+
+[artifacts.PROOF-ATTEMPT.identifiers.attempt.references.CONJECTURE]
+headings = ["conj-attempts", "conj-status"]

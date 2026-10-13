@@ -13,21 +13,25 @@ date: {YYYY-MM-DD}
 
 ## Statement
 
-{One precise impossibility statement with all quantifiers explicit, e.g.:
+{One precise finite statement with all quantifiers explicit. Typically an impossibility, e.g.:
 "The distribution p defined in Exact Data admits no model of the class defined in Model Class."
-State exactly what is quantified over (all response functions, all latent distributions, all blocklengths, ...).}
+or "The constraint system in Exact Data has no solution in the class defined in Model Class."
+State exactly what is quantified over (all response functions, all latent distributions, all assignments, all blocklengths, ...).}
 
 ## Model Class
 
-{Define the excluded model class mathematically. Give the decomposition form explicitly,
-e.g. p(a,b,c) = Σ P(α)P(β)P(γ) P(a|β,γ) P(b|γ,α) P(c|α,β), and any cardinality reductions
-(Carathéodory bounds) that make the problem finite-dimensional.}
+{Define the class of objects the statement ranges over or excludes, mathematically. For an
+impossibility about probabilistic models give the decomposition form explicitly, e.g.
+p(a,b,c) = Σ P(α)P(β)P(γ) P(a|β,γ) P(b|γ,α) P(c|α,β); for an infeasible instance give the
+constraint system; in every case state the reduction (cardinality or Carathéodory bounds,
+symmetry, finite blocklength) that makes the check finite.}
 
 ## Exact Data
 
-{The mathematical object in exact rational form. Tables of probabilities as fractions.
-No floating point anywhere in this section. If the object is parameterized (e.g., visibility),
-state the exact parameter value the claim is about.}
+{The mathematical object in exact form: integers, rationals, or finite symbolic data. Tables of
+probabilities as fractions; coefficients as integers; clauses as literal lists. No floating point
+anywhere in this section. If the object is parameterized (e.g., a visibility or a size), state the
+exact parameter value the claim is about.}
 
 ## Provenance
 

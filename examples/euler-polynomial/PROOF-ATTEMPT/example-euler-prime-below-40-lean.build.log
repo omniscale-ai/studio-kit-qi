@@ -1,0 +1,17 @@
+# attest_lean.py v1.0 — 2026-10-13 16:32:39 +0200
+# invocation: python3 scripts/attest_lean.py --project examples/euler-polynomial/lean-euler --file Euler.lean --decl Euler.prime_below_40 --conjecture examples/euler-polynomial/CONJECTURE/example-euler-prime-below-40.md --slug euler-prime-below-40-lean --out examples/euler-polynomial/PROOF-ATTEMPT/example-euler-prime-below-40-lean.md --route-note 'decide: the bounded statement is decidable (Nat.decidableBallLT), and the kernel evaluates 40 trial divisions; written by the kit maintainer'
+
+## lake build (cwd examples/euler-polynomial/lean-euler)
+Build completed successfully (3 jobs).
+## exit: 0
+
+## query file
+import Euler
+#print axioms Euler.prime_below_40
+#check @Euler.prime_below_40
+
+## lake env lean <query>
+'Euler.prime_below_40' does not depend on any axioms
+Euler.prime_below_40 : ∀ (n : Nat), n < 40 → Euler.isPrime (Euler.f n) = true
+## exit: 0
+

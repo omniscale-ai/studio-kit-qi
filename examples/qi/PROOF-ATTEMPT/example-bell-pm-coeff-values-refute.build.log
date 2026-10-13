@@ -1,0 +1,23 @@
+# attest_lean.py v1.0 — 2026-10-13 16:21:53 +0200
+# invocation: python3 scripts/attest_lean.py --project examples/qi/lean-chsh --file Chsh.lean --decl Chsh.not_bell_pm_one_in_pm_two --conjecture examples/qi/CONJECTURE/example-bell-pm-coeff-values.md --slug bell-pm-coeff-values-refute --out examples/qi/PROOF-ATTEMPT/example-bell-pm-coeff-values-refute.md --refutes --route-note 'witness c = (1,1,1,1) on the all-true strategy, taken from the exploration record; decide on the resulting closed disjunction; written by the kit maintainer'
+
+## lake build (cwd examples/qi/lean-chsh)
+Build completed successfully (3 jobs).
+## exit: 0
+
+## query file
+import Chsh
+#print axioms Chsh.not_bell_pm_one_in_pm_two
+#check @Chsh.not_bell_pm_one_in_pm_two
+
+## lake env lean <query>
+'Chsh.not_bell_pm_one_in_pm_two' does not depend on any axioms
+Chsh.not_bell_pm_one_in_pm_two : ¬∀ (c00 c01 c10 c11 : Int),
+    c00 = 1 ∨ c00 = -1 →
+      c01 = 1 ∨ c01 = -1 →
+        c10 = 1 ∨ c10 = -1 →
+          c11 = 1 ∨ c11 = -1 →
+            ∀ (a0 a1 b0 b1 : Bool),
+              Chsh.bell c00 c01 c10 c11 a0 a1 b0 b1 = 2 ∨ Chsh.bell c00 c01 c10 c11 a0 a1 b0 b1 = -2
+## exit: 0
+

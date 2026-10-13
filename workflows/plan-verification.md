@@ -6,6 +6,8 @@ description: Invoke FIRST whenever the user asks to verify a paper, repository, 
 
 ## Purpose
 
+*Scope note: this workflow plans the verification of a **published** result. To find, state or prove something new, use `workflows/plan-research.md` instead; the two plans can coexist in one project.*
+
 Verification work has order-of-magnitude cost differences (hash check: minutes; independent checker: days; Lean: months) and irreversible-ish decisions (modifying third-party code, contacting authors, publishing results). These are the **user's** decisions. This workflow elicits them BEFORE any heavy action and records them in a VERIFICATION-PLAN artifact that downstream workflows reference.
 
 ## Steps

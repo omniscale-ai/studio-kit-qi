@@ -27,7 +27,7 @@ One certificate certifies exactly one claim.}
 ## Semantics
 
 {What the certificate IS mathematically (e.g., a Farkas separating hyperplane for LP infeasibility;
-an SOS decomposition) and the exact statement that a passing check establishes:
+an SOS decomposition; a DRAT proof; an enumeration log with its exhaustiveness argument) and the exact statement that a passing check establishes:
 "⟨certificate, v⟩ > 0 for every vertex v of polytope P, and P ⊇ all model-class images, hence the claim."
 Spell out the checking predicate precisely enough that an independent implementation needs no other source.}
 

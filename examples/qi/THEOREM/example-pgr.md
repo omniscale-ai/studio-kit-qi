@@ -30,7 +30,7 @@ J. Pauwels, N. Gisin, R. Renner, *Bipartite Bound Information Exists*, [arXiv:26
 
 ## Proof Map
 
-`cpt-qi-pm-pgr-thm1` (artifacts/PROOF-MAP/examples/example-pgr.md)
+`cpt-qi-pm-pgr-thm1` (examples/qi/PROOF-MAP/example-pgr.md)
 
 ## Trust Summary
 

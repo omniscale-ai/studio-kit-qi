@@ -1,0 +1,6 @@
+name = "chsh"
+version = "0.1.0"
+defaultTargets = ["Chsh"]
+
+[[lean_lib]]
+name = "Chsh"

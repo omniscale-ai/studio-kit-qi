@@ -9,7 +9,7 @@ reference runs of the C++ binary; conventions marked **[inferred]** follow
 from source reading only, but all of them feed into the final exact score,
 which was verified end-to-end (see §12).
 
-Reference implementation of this spec: `check_certificate.py` (same
+Reference implementation of this spec: `fast_inflation.py` (same
 directory).
 
 Notation: the triangle network has three sources α, β, γ (types 0, 1, 2) and
@@ -371,7 +371,7 @@ that wants to certify the physics claim, not merely LP infeasibility, should
 also verify: all groups pairwise share no parent source copies
 (d-separation: party `(t,(j,k))` has parents `((t+1)%3, j)` and
 `((t+2)%3, k)`), and each `Mi` maps into `{A00, B00, C00}` under some
-source-permutation symmetry (injectability). `check_certificate.py` currently
+source-permutation symmetry (injectability). `fast_inflation.py` currently
 trusts the constraint set on this point — the SRB set was verified by
 inspection: both constraints are standard LPI constraints.)
 
